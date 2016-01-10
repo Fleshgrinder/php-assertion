@@ -9,11 +9,15 @@ Open a terminal, enter your project directory and execute the following command 
  dependencies:
 
 ```bash
-$ composer require fleshgrinder/country
+$ composer require fleshgrinder/assertion
 ```
 
 This command requires you to have Composer installed globally, as explained in the
  [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
+
+**NOTE:** Do not install the library as a development requirement because composer does not install them when a library
+ is installed as a dependency of another library. You want your assertions to be executed at all times, except when the
+ full application goes into production; which is managed through the [Configuration].
 
 ### Big Integers
 The PHP extension [GNU Multiple Precision](https://secure.php.net/gmp) is required to validate big integer numbers.
@@ -48,7 +52,7 @@ assert('is_null($var) || Variable::isScalarPositiveNaturalNumber($var)', 'variab
 Of course one could also use `$var === null` in the examples above.
 
 ### Defensive Programming / Design by Contract
-> “*Be polite, Never Assert*
+> “**Be polite, Never Assert**
 >
 > Avoid the `assert()` mechanism, because it could turn a three-day debug fest into a ten minute one.”
 >
