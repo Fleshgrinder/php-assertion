@@ -1,0 +1,32 @@
+{
+    "name": "fleshgrinder/assertion",
+    "description": "Library to ease design by contract programming in PHP.",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Richard Fussenegger",
+            "email": "fleshgrinder@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "require-dev": {
+		"ext-gd": "*",
+        "phpunit/phpunit": "^5.1"
+    },
+    "autoload": {
+		"classmap": [
+			"src/Variable.php"
+		]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fleshgrinder\\Assertion\\": "test/"
+        }
+    },
+	"scripts": {
+		"test": "phpunit"
+	}
+}
