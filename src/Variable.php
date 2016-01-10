@@ -486,7 +486,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isPositiveNaturalNumber($var) {
-		if (is_numeric($var)) {
+		if (!is_float($var) && is_numeric($var)) {
 			if (filter_var($var, FILTER_VALIDATE_INT) !== false) {
 				return $var > 0;
 			}
@@ -696,7 +696,18 @@ abstract class Variable {
 		self::setWarningHandler();
 
 		try {
-			return gmp_init($number);
+			$gmp = gmp_init($number);
+
+			if (defined('HHVM_VERSION')) {
+				if (function_exists('bccomp') && bccomp(gmp_strval($gmp), $gmp) !== 0) {
+					return false;
+				}
+				else {
+					trigger_error('BC Math is not installed, cannot differentiate between big integers and floats in HHVM.', E_USER_NOTICE);
+				}
+			}
+
+			return $gmp;
 		}
 		catch (ErrorException $e) {
 			return false;
