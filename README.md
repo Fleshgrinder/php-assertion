@@ -1,6 +1,6 @@
 [![Build Status](https://img.shields.io/travis/Fleshgrinder/php-assertion.svg?style=flat-square)](https://travis-ci.org/Fleshgrinder/php-assertion)
-[![Packagist](https://img.shields.io/packagist/v/Fleshgrinder/assertion.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
-[![Packagist License](https://img.shields.io/packagist/l/Fleshgrinder/assertion.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
+[![Packagist](https://img.shields.io/packagist/v/fleshgrinder/assertion.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
+[![Packagist License](https://img.shields.io/packagist/l/fleshgrinder/assertion.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
 # PHP Assertions
 Library to ease defensive and design by contract (DbC) programming with [`assert()`](https://secure.php.net/assert) in PHP.
 
