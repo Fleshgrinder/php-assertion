@@ -698,13 +698,8 @@ abstract class Variable {
 		try {
 			$gmp = gmp_init($number);
 
-			if (defined('HHVM_VERSION')) {
-				if (function_exists('bccomp') && bccomp(gmp_strval($gmp), $gmp) !== 0) {
-					return false;
-				}
-				else {
-					trigger_error('BC Math is not installed, cannot differentiate between big integers and floats in HHVM.', E_USER_NOTICE);
-				}
+			if (gmp_strval($gmp) !== $number) {
+				return false;
 			}
 
 			return $gmp;
