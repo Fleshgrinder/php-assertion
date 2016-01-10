@@ -1,13 +1,32 @@
+[![Build Status](https://img.shields.io/travis/Fleshgrinder/php-assertion.svg?style=flat-square)](https://travis-ci.org/Fleshgrinder/php-assertion)
+[![Packagist](https://img.shields.io/packagist/v/Fleshgrinder/assertion.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
+[![Packagist License](https://img.shields.io/packagist/l/Fleshgrinder/assertion.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
 # PHP Assertions
+Library to ease defensive and design by contract (DbC) programming with [`assert()`](https://secure.php.net/assert) in PHP.
 
 ## Installation
-Note that this library requires the [GNU Multiple Precision](https://secure.php.net/book.gmp) PHP extension to be
- installed. GMP allows for very fast arbitrary precision integer calculations and is used to ensure that the platform
- does not result in false positives because of overflows.
+Open a terminal, enter your project directory and execute the following command to add this package to your
+ dependencies:
 
-The installation on [Debian](https://www.debian.org/) based systems is usually as easy as executing `apt-get install php5-gmp`
- if PHP was installed from the official packages. Refer to the [installation page of the extension](https://secure.php.net/gmp.installation)
- if you compile PHP yourself.
+```bash
+$ composer require fleshgrinder/country
+```
+
+This command requires you to have Composer installed globally, as explained in the
+ [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
+
+### Big Integers
+The PHP extension [GNU Multiple Precision](https://secure.php.net/gmp) is required to validate big integer numbers.
+ It is not required but a `E_USER_NOTICE` error is triggered if a big integer is encountered and the extension is not
+ available. The installation on [Debian](https://www.debian.org/) based systems is usually as easy as executing
+ `apt-get install php5-gmp` if PHP was installed from the official packages. The required _dll_ is already present on
+ Windows systems and only needs to be loaded in the global PHP configuration. Refer to the
+ [installation page of the extension](https://secure.php.net/gmp.installation) if you compile PHP yourself.
+
+### Big Floats
+The PHP extension [BC Math](https://secure.php.net/bcmath) is required to validate big float numbers. It is not required
+ but a `E_USER_NOTICE` error is triggered if a big float is encountered and the extension is not available. PHP must be
+ compiled with the `--enable-bcmath` flag and the extension is always loaded on Windows systems.
 
 ## Usage
 This library provides a single purely static class that can be used in assertions to ease repetitive scalar inspections
@@ -28,12 +47,20 @@ assert('is_null($var) || Variable::isScalarPositiveNaturalNumber($var)', 'variab
 
 Of course one could also use `$var === null` in the examples above.
 
-## Design by Contract
+### Defensive Programming / Design by Contract
+> “*Be polite, Never Assert*
+>
+> Avoid the `assert()` mechanism, because it could turn a three-day debug fest into a ten minute one.”
+>
+> — [How to Write Unmaintainable Code](https://thc.org/root/phun/unmaintain.html), Roedy Green.
 
-## Configuration
+Be sure to check the [Weblinks] section and read through all the sources to find out what assertions are good for, when
+ to use them, and when not. Feel free to open an issue if you are still in doubt.
+
+### Configuration
 Assertions need to be configured appropriately in order to be useful during [Development] as well as in [Production].
 
-### Development
+#### Development
 ```ini
 [Assertion]
 assert.active     = 1
@@ -41,9 +68,13 @@ assert.bail       = 1
 assert.callback   = 0
 assert.quiet_eval = 1
 assert.warning    = 1
+; PHP 7:
+;zend.assertions   = 1
+;assert.exception  = 0
+
 ```
 
-### Production
+#### Production
 ```ini
 [Assertion]
 assert.active     = 0
@@ -51,6 +82,9 @@ assert.bail       = 0
 assert.callback   = 0
 assert.quiet_eval = 0
 assert.warning    = 0
+; PHP 7:
+;zend.assertions   = -1
+;assert.exception  = 0
 ```
 
 ### Note
@@ -64,8 +98,8 @@ However, many of the filter functions are exposed via methods that do not requir
  GMP and bcmath functions as needed while ensuring best performance by using the most appropriate library in the
  background.
 
-## FAQ
-_Why does is the class called Variable?_
+### FAQ
+> _Why does is the class called Variable?_
 
 In order to result in nice English sentences, just look at the following:
 
@@ -74,19 +108,32 @@ assert('Variable::isPositiveNaturalNumber($id)');
 // Assert variable (id) is (a) positive natural number.
 ```
 
-_Why is it a class in the first place and not simply procedural functions?_
+> _Why is it a class in the first place and not simply procedural a functions?_
 
 Because PHP (composer) does not support lazy loading of procedural functions and it makes no sense to include the file
 in production. Using a class makes this possible.
 
-_Why does the class not follow PSR-4 (and the associated vendor prefixing to avoid conflicts) while the tests do?_
+> _Why does the class not follow PSR-4 (and the associated vendor prefixing to avoid conflicts) while the tests do?_
 
 To minimize noise within the _assert_ calls and possible extra work with IDEs (like PhpStorm) that automatically import
  classes with _use_ statements that do not work nicely together with _assert_. I consider the likelihood of another
  class being named after something generic as _variable_ to be very low and thus concluded that above arguments are
  reason enough to put it in the global namespace.
 
+## Credits
+Credit where credit is due: this library was inspired by [Drupal’s](https://www.drupal.org/) 
+ [Inspector class](https://github.com/drupal/drupal/blob/8.0.x/core/lib/Drupal/Component/Assertion/Inspector.php).
+
 ## Weblinks
+- The PHP Group: “[_`assert()`_](https://secure.php.net/assert)”
+- Steve McConnell: “[_Code Complete: 2nd Edition_](http://www.stevemcconnell.com/cc.htm),”  2004, Microsoft Press, 960
+ pages. ISBN: 0735619670. _Section 8.2 in particular but there is more general advice in regards to defensive
+ programming and how to use `assert()` effectively._
+- Aki Tendo, et al.: “[_Adding Assertions to Drupal - Test Tools._](https://www.drupal.org/node/2408013)”
+- Jess (xjm), et al.: “[_[policy, no patch] Define best practices for using and testing assertions and document them before adding assertions to core_](https://www.drupal.org/node/2548671)”
+- Aki Tendo: “[_Runtime Assertions have been added to Drupal core_](https://www.drupal.org/node/2569701),_” September 29, 2015.
+- Drupal contributors: “[_Well Formed Errors Initiative_](https://www.drupal.org/node/2412507)_,” March 6, 2015.
+- Stackoverflow contributors: “[_When should assertions stay in production code?_](http://stackoverflow.com/questions/17732)_”
 - Wikipedia contributors: “[_Assertion (software development)_](https://en.wikipedia.org/wiki/Assertion_%28software_development%29)”
 - Wikipedia contributors: “[_Design by contract_](https://en.wikipedia.org/wiki/Design_by_contract)”
 - Wikipedia contributors: “[_Exception handling_](https://en.wikipedia.org/wiki/Exception_handling)”

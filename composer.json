@@ -1,6 +1,6 @@
 {
     "name": "fleshgrinder/assertion",
-    "description": "Library to ease design by contract programming in PHP.",
+    "description": "Library to ease defensive and design by contract (DbC) programming with assert() in PHP.",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
@@ -17,6 +17,9 @@
         "phpunit/phpunit": "^5.1"
     },
     "autoload": {
+		"exclude-from-classmap": [
+			"src/Variable.php"
+		],
 		"classmap": [
 			"src/Variable.php"
 		]
