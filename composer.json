@@ -17,9 +17,6 @@
         "phpunit/phpunit": "^5.1"
     },
     "autoload": {
-		"exclude-from-classmap": [
-			"src/Variable.php"
-		],
 		"classmap": [
 			"src/Variable.php"
 		]
