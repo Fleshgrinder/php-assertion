@@ -103,7 +103,7 @@ However, many of the filter functions are exposed via methods that do not requir
  background.
 
 ### FAQ
-> _Why does is the class called Variable?_
+> _Why is the class called Variable?_
 
 In order to result in nice English sentences, just look at the following:
 
