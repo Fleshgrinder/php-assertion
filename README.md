@@ -58,11 +58,12 @@ Of course one could also use `$var === null` in the examples above.
 >
 > — [How to Write Unmaintainable Code](https://thc.org/root/phun/unmaintain.html), Roedy Green.
 
-Be sure to check the [Weblinks] section and read through all the sources to find out what assertions are good for, when
- to use them, and when not. Feel free to open an issue if you are still in doubt.
+Be sure to check the [Weblinks](#Weblinks) section and read through all the sources to find out what assertions are good
+ for, when to use them, and when not. Feel free to open an issue if you are still in doubt.
 
 ### Configuration
-Assertions need to be configured appropriately in order to be useful during [Development] as well as in [Production].
+Assertions need to be configured appropriately in order to be useful during [Development](#Development) as well as in
+ [Production](#Production).
 
 #### Development
 ```ini
@@ -71,10 +72,10 @@ assert.active     = 1
 assert.bail       = 1
 assert.callback   = 0
 assert.quiet_eval = 1
-assert.warning    = 1
-; PHP 7:
+assert.warning    = 0
+; PHP 7
+;assert.exception  = 1
 ;zend.assertions   = 1
-;assert.exception  = 0
 
 ```
 
@@ -86,9 +87,9 @@ assert.bail       = 0
 assert.callback   = 0
 assert.quiet_eval = 0
 assert.warning    = 0
-; PHP 7:
-;zend.assertions   = -1
+; PHP 7
 ;assert.exception  = 0
+;zend.assertions   = -1
 ```
 
 ### Note
@@ -112,10 +113,10 @@ assert('Variable::isPositiveNaturalNumber($id)');
 // Assert variable (id) is (a) positive natural number.
 ```
 
-> _Why is it a class in the first place and not simply procedural a functions?_
+> _Why is it a class in the first place and not a collection of procedural functions?_
 
 Because PHP (composer) does not support lazy loading of procedural functions and it makes no sense to include the file
-in production. Using a class makes this possible.
+in production. Using a class on the other hand makes lazy loading possible.
 
 > _Why does the class not follow PSR-4 (and the associated vendor prefixing to avoid conflicts) while the tests do?_
 
@@ -135,9 +136,9 @@ Credit where credit is due: this library was inspired by [Drupal’s](https://ww
  programming and how to use `assert()` effectively._
 - Aki Tendo, et al.: “[_Adding Assertions to Drupal - Test Tools._](https://www.drupal.org/node/2408013)”
 - Jess (xjm), et al.: “[_[policy, no patch] Define best practices for using and testing assertions and document them before adding assertions to core_](https://www.drupal.org/node/2548671)”
-- Aki Tendo: “[_Runtime Assertions have been added to Drupal core_](https://www.drupal.org/node/2569701),_” September 29, 2015.
-- Drupal contributors: “[_Well Formed Errors Initiative_](https://www.drupal.org/node/2412507)_,” March 6, 2015.
-- Stackoverflow contributors: “[_When should assertions stay in production code?_](http://stackoverflow.com/questions/17732)_”
+- Aki Tendo: “[_Runtime Assertions have been added to Drupal core_](https://www.drupal.org/node/2569701),” September 29, 2015.
+- Drupal contributors: “[_Well Formed Errors Initiative_](https://www.drupal.org/node/2412507),” March 6, 2015.
+- Stackoverflow contributors: “[_When should assertions stay in production code?_](http://stackoverflow.com/questions/17732)”
 - Wikipedia contributors: “[_Assertion (software development)_](https://en.wikipedia.org/wiki/Assertion_%28software_development%29)”
 - Wikipedia contributors: “[_Design by contract_](https://en.wikipedia.org/wiki/Design_by_contract)”
 - Wikipedia contributors: “[_Exception handling_](https://en.wikipedia.org/wiki/Exception_handling)”
