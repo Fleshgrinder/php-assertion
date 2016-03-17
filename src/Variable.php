@@ -96,7 +96,9 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function hasAllSet($var) {
-		return static::applyCallback($var, 'isset', false);
+		return static::applyCallback($var, function ($member) {
+			return isset($member);
+		});
 	}
 
 	/**
