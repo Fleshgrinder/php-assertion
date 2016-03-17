@@ -16,6 +16,10 @@
 		"ext-gd": "*",
         "phpunit/phpunit": "^5.1"
     },
+    "suggest": {
+        "ext-gmp": "For assertion of big integer numbers.",
+        "ext-bcmath": "For assertion of big real numbers."
+    },
     "autoload": {
 		"classmap": [
 			"src/Variable.php"
