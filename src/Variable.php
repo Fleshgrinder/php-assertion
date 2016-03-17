@@ -90,6 +90,16 @@ abstract class Variable {
 	}
 
 	/**
+	 * Assert variable has all members set (not `NULL`).
+	 *
+	 * @param mixed $var
+	 * @return bool
+	 */
+	final public static function hasAllSet($var) {
+		return static::applyCallback($var, 'isset', false);
+	}
+
+	/**
 	 * Assert variable contains arrays only.
 	 *
 	 * @see is_array()
