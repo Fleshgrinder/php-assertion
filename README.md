@@ -38,18 +38,16 @@ This library provides a single purely static class that can be used in assertion
 
 ```php
 // Use built-in functions whenever possible.
-assert('is_string($var)', 'variable must be of type string.');
-assert('Variable::isStringWithContent($var)', 'variable must be of type string with content');
-assert('Variable::isStringable($var)', 'variable must be of type string or a convertible object');
-assert('Variable::isStringableWithContent($var)', 'variable must be of type string or a convertible object with content');
+assert(is_string($var), 'variable must be of type string.');
+assert(Variable::isStringWithContent($var), 'variable must be of type string with content');
+assert(Variable::isStringable($var), 'variable must be of type string or a convertible object');
+assert(Variable::isStringableWithContent($var), 'variable must be of type string or a convertible object with content');
 
 // Again, use built-in functions whenever possible.
-assert('is_null($var) || Variable::isInteger($var)', 'variable must be NULL or an integer (ℤ)');
-assert('is_null($var) || Variable::isNaturalNumber($var)', 'variable must be NULL or a natural number (ℕ₀)');
-assert('is_null($var) || Variable::isScalarPositiveNaturalNumber($var)', 'variable must be NULL or a positive natural number (ℕ₁) of type int');
+assert($var === null || Variable::isInteger($var), 'variable must be NULL or an integer (ℤ)');
+assert($var === null || Variable::isNaturalNumber($var), 'variable must be NULL or a natural number (ℕ₀)');
+assert($var === null || Variable::isScalarPositiveNaturalNumber($var), 'variable must be NULL or a positive natural number (ℕ₁) of type int');
 ```
-
-Of course one could also use `$var === null` in the examples above.
 
 ### Defensive Programming / Design by Contract
 > “**Be polite, Never Assert**
@@ -109,7 +107,7 @@ However, many of the filter functions are exposed via methods that do not requir
 In order to result in nice English sentences, just look at the following:
 
 ```php
-assert('Variable::isPositiveNaturalNumber($id)');
+assert(Variable::isPositiveNaturalNumber($id));
 // Assert variable (id) is (a) positive natural number.
 ```
 
