@@ -7,6 +7,13 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasRealNumbersOnly()
+ * @covers \Variable::isRealNumber()
+ * @covers \Variable::isScalarNaturalNumber()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class RealNumberTest extends VariableTest {
 
 	/** @inheritDoc */

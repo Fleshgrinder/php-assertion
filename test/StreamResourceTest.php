@@ -7,6 +7,12 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasStreamResourcesOnly()
+ * @covers \Variable::isStreamResource()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class StreamResourceTest extends VariableTest {
 
 	/** @inheritDoc */

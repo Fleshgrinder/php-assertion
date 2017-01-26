@@ -7,6 +7,14 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::gmpCreate()
+ * @covers \Variable::hasPositiveNaturalNumbersOnly()
+ * @covers \Variable::isPositiveNaturalNumber()
+ * @covers \Variable::setWarningHandler()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class PositiveNaturalNumberTest extends VariableTest {
 
 	/** @inheritDoc */

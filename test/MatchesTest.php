@@ -9,6 +9,12 @@ namespace Fleshgrinder\Assertion;
 
 use Variable;
 
+/**
+ * @covers \Variable::allMatch()
+ * @covers \Variable::matches()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class MatchesTest extends VariableDataTypeTest {
 
 	public function testMatch() {

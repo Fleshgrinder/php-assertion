@@ -11,6 +11,12 @@ final class InstanceOfTestHelperClass {}
 
 use Variable;
 
+/**
+ * @covers \Variable::hasInstancesOfOnly()
+ * @covers \Variable::isInstanceOf()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class InstanceOfTest extends VariableDataTypeTest {
 
 	/** @inheritDoc */

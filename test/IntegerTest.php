@@ -7,6 +7,14 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::gmpCreate()
+ * @covers \Variable::hasIntegersOnly()
+ * @covers \Variable::isInteger()
+ * @covers \Variable::setWarningHandler()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class IntegerTest extends VariableTest {
 
 	/** @inheritDoc */

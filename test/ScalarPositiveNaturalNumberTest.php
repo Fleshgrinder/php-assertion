@@ -7,6 +7,12 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasScalarPositiveNaturalNumbersOnly()
+ * @covers \Variable::isScalarPositiveNaturalNumber()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class ScalarPositiveNaturalNumberTest extends VariableTest {
 
 	/** @inheritDoc */

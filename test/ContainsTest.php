@@ -9,6 +9,12 @@ namespace Fleshgrinder\Assertion;
 
 use Variable;
 
+/**
+ * @covers \Variable::allContain()
+ * @covers \Variable::contains()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class ContainsTest extends VariableDataTypeTest {
 
 	public function testContainsCaseInsensitive() {

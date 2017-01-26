@@ -9,6 +9,10 @@ namespace Fleshgrinder\Assertion;
 
 /**
  * This test illustrates nicely how dangerous PHP’s {@see empty} is if the caller does not know what he really wants.
+ *
+ * @covers \Variable::hasNoEmptyValues()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
  */
 final class NotEmptyTest extends VariableTest {
 

@@ -7,6 +7,12 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasStrictArraysOnly()
+ * @covers \Variable::isStrictArray()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class StrictArrayTest extends VariableTest {
 
 	/** @inheritDoc */
