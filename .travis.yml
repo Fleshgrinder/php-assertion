@@ -38,5 +38,5 @@ install:
 script:
   - phpunit $COVERAGE
 after_success:
-  - [ -z $COVERAGE ] && travis_retry coveralls --no-interaction
-  - [ -z $COVERAGE ] && travis_retry test-reporter --no-interaction
+  - if [ -z $COVERAGE ]; then travis_retry coveralls --no-interaction; fi;
+  - if [ -z $COVERAGE ]; then travis_retry test-reporter --no-interaction; fi;
