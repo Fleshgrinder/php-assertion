@@ -31,7 +31,11 @@ cache:
 
 install:
   - composer update --classmap-authoritative --no-interaction --no-progress --no-suggest --prefer-dist
+before_script:
+  - function coverage() { test $TRAVIS_PHP_VERSION = $COVERAGE_VERSION; }
 script:
-  - test $TRAVIS_PHP_VERSION = $COVERAGE_VERSION && phpunit || phpunit --no-coverage
+  - coverage && phpunit || phpunit --no-coverage
 after_success:
-  - test $TRAVIS_PHP_VERSION = $COVERAGE_VERSION && bash -i bin/travis/after_success.bash
+  - coverage && travis_retry test-reporter --no-interaction
+  - coverage && travis_retry coveralls --no-interaction
+  - coverage && traivs_retry ocular code-coverage:upload --format=php-clover build/logs/clover.xml
