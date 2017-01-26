@@ -12,14 +12,15 @@ env:
     - COVERAGE=--no-coverage
     - PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
 
-matrix:
-  allow_failures:
-    - php: nightly
-  fast_finish: true
-
 os:
   - linux
   - osx
+
+matrix:
+  allow_failures:
+    - php: nightly
+    - os: osx
+  fast_finish: true
 
 sudo: false
 cache:
