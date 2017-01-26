@@ -28,7 +28,5 @@ cache:
 
 install:
   - composer update --classmap-authoritative --no-interaction --no-progress --no-suggest --prefer-dist
-before_script:
-  - echo $TRAVIS_PHP_VERSION
 script:
   - phpunit $COVERAGE
