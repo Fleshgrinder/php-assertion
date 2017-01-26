@@ -8,5 +8,41 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHP Runtime" type="php">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../phpstorm-stubs/.git" />
+          <root url="file://$MODULE_DIR$/../phpstorm-stubs/standard" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../phpstorm-stubs/.git" />
+          <root url="file://$MODULE_DIR$/../phpstorm-stubs/standard" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test-nopubkey.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/nosig.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badkey.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badsig.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/new.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/old.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.0.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test-nopubkey.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/nosig.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badkey.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badsig.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/new.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/old.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.0.phar/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

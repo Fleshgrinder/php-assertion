@@ -35,7 +35,7 @@
         "psr-4": {
             "Fleshgrinder\\Assertion\\": [
 				"src/",
-				"test/"
+				"tests/"
 			]
         }
     },
