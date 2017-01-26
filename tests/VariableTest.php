@@ -11,7 +11,7 @@ use Variable;
 
 abstract class VariableTest extends VariableDataTypeTest {
 
-	final public function test() {
+	public function test() {
 		$var = $this->getVariables();
 		if (!is_array($var)) {
 			$var = [$var];

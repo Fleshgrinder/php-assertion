@@ -1,23 +1,21 @@
 <?php
 /**
  * @author Richard Fussenegger <fleshgrinder@users.noreply.github.com>
- * @copyright 2016 Richard Fussenegger
+ * @copyright 2017 Richard Fussenegger
  * @license MIT
  */
 
 namespace Fleshgrinder\Assertion;
 
 /**
- * @covers \Variable::hasTraversablesOnly()
- * @covers \Variable::isTraversable()
+ * @covers \Variable::hasIterablesOnly()
  * @uses \Variable::applyCallback()
  */
-final class TraversableTest extends VariableTest {
-	use DisableDeprecationErrors;
+final class IterableTest extends VariableTest {
 
 	/** @inheritDoc */
 	protected function getMethodName() {
-		return 'hasTraversablesOnly';
+		return 'hasIterablesOnly';
 	}
 
 	/** @inheritDoc */

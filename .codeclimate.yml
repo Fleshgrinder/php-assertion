@@ -13,11 +13,15 @@ engines:
     enabled: true
     config:
       file_extensions: php
-      rulesets: "config/phpmd/ruleset.xml"
+      rulesets: "cleancode,codesize,controversial,design,naming,unusedcode"
+    checks:
+      CleanCode/StaticAccess:
+        enabled: false
+      Controversial/CamelCasePropertyName:
+        enabled: false
+      Controversial/CamelCaseParameterName:
+        enabled: false
 
 ratings:
   paths:
     - "**.php"
-
-exlude_paths:
-  - "vendor/"
