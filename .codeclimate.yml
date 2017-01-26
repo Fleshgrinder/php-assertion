@@ -15,8 +15,9 @@ engines:
       file_extensions: php
       rulesets: "cleancode,codesize,controversial,design,naming,unusedcode"
     checks:
-      Cleancode/StaticAccess:
-        exceptions: "Variable"
+      CleanCode/StaticAccess:
+        properties:
+          exceptions: "Variable"
       Controversial/CamelCasePropertyName:
         enabled: false
       Controversial/CamelCaseParameterName:
