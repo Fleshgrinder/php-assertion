@@ -5,7 +5,7 @@
 	backupGlobals="false"
 	backupStaticAttributes="false"
 	beStrictAboutChangesToGlobalState="true"
-	beStrictAboutCoversAnnotation="true"
+	beStrictAboutCoversAnnotation="false"
 	beStrictAboutOutputDuringTests="true"
 	beStrictAboutResourceUsageDuringSmallTests="true"
 	beStrictAboutTestsThatDoNotTestAnything="true"
@@ -48,7 +48,7 @@
 
 	<testsuites>
 		<testsuite name="unit_tests">
-			<directory suffix="Test.php">tests</directory>
+			<directory suffix="Test.php">test</directory>
 		</testsuite>
 	</testsuites>
 
