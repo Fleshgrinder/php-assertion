@@ -16,9 +16,7 @@ engines:
       rulesets: "cleancode,codesize,controversial,design,naming,unusedcode"
     checks:
       CleanCode/StaticAccess:
-        enabled: true
-        properties:
-          exceptions: "Variable"
+        enabled: false
       Controversial/CamelCasePropertyName:
         enabled: false
       Controversial/CamelCaseParameterName:
