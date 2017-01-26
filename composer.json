@@ -10,27 +10,49 @@
         }
     ],
     "require": {
-        "php": ">=5.6.0"
+        "php": "^5.6 || ^7.0"
     },
     "require-dev": {
 		"ext-gd": "*",
-        "phpunit/phpunit": "^5.1"
+        "phpunit/phpunit": "^5.7",
+        "satooshi/php-coveralls": "^1.0",
+        "codeclimate/php-test-reporter": "^0.4.2"
     },
     "suggest": {
-        "ext-gmp": "For assertion of big integer numbers.",
-        "ext-bcmath": "For assertion of big real numbers."
+        "ext-gmp": "For asserting big integer numbers.",
+        "ext-bcmath": "For asserting arbitrary precision numbers."
     },
     "autoload": {
+		"psr-4": {
+			"Fleshgrinder\\Assertion\\": "src/"
+		},
 		"classmap": [
 			"src/Variable.php"
 		]
     },
     "autoload-dev": {
         "psr-4": {
-            "Fleshgrinder\\Assertion\\": "test/"
+            "Fleshgrinder\\Assertion\\": [
+				"src/",
+				"tests/"
+			]
         }
     },
 	"scripts": {
-		"test": "phpunit"
+		"test": "phpx vendor/phpunit/phpunit/phpunit --colors=always",
+		"test-56": "php56x vendor/phpunit/phpunit/phpunit --colors=always",
+		"test-70": "php70x vendor/phpunit/phpunit/phpunit --colors=always",
+		"test-71": "php71x vendor/phpunit/phpunit/phpunit --colors=always",
+		"test-all": [
+			"@test-56",
+			"@test-70",
+			"@test-71"
+		],
+		"test-dbg": "phpdbg -qrr vendor/phpunit/phpunit/phpunit --colors=always"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }

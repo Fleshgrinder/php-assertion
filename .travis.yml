@@ -21,6 +21,12 @@ matrix:
     - php: nightly
     - os: osx
   fast_finish: true
+  include:
+    - php: 7.1
+      env: COVERAGE=
+
+git:
+  depth: 1
 
 sudo: false
 cache:
@@ -31,3 +37,6 @@ install:
   - composer update --classmap-authoritative --no-interaction --no-progress --no-suggest --prefer-dist
 script:
   - phpunit $COVERAGE
+after_success:
+  - [ -z $COVERAGE ] && travis_retry coveralls --no-interaction
+  - [ -z $COVERAGE ] && travis_retry test-reporter --no-interaction
