@@ -1,5 +1,5 @@
 /.idea/
-/var/
+/build/
 /vendor/
 /composer.lock
 /phpunit.xml

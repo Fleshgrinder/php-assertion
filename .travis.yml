@@ -9,18 +9,20 @@ php:
 
 env:
   global:
-    - COVERAGE=--no-coverage
+    - COVERAGE_VERSION=7.1
     - PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
-
-os:
-  - linux
-  - osx
 
 matrix:
   allow_failures:
     - php: nightly
-    - os: osx
   fast_finish: true
+
+git:
+  depth: 1
+
+branches:
+  only:
+    - master
 
 sudo: false
 cache:
@@ -29,5 +31,11 @@ cache:
 
 install:
   - composer update --classmap-authoritative --no-interaction --no-progress --no-suggest --prefer-dist
+before_script:
+  - function coverage() { test $TRAVIS_PHP_VERSION = $COVERAGE_VERSION; }
 script:
-  - phpunit $COVERAGE
+  - coverage && phpunit || phpunit --no-coverage
+after_success:
+  - coverage && travis_retry ocular code-coverage:upload --format=php-clover build/logs/clover.xml
+  - coverage && travis_retry test-reporter --no-interaction
+  - coverage && travis_retry coveralls --no-interaction
