@@ -16,6 +16,7 @@ engines:
       rulesets: "cleancode,codesize,controversial,design,naming,unusedcode"
     checks:
       CleanCode/StaticAccess:
+        enabled: true
         properties:
           exceptions: "Variable"
       Controversial/CamelCasePropertyName:
@@ -26,6 +27,3 @@ engines:
 ratings:
   paths:
     - "**.php"
-
-exlude_paths:
-  - "vendor/"
