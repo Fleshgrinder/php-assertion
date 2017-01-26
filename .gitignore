@@ -1,4 +1,9 @@
 /.idea/
+!/.idea/composerJson.xml
+!/.idea/encodings.xml
+!/.idea/modules.xml
+!/.idea/*.iml
+!/.idea/php.xml
 /build/
 /vendor/
 /composer.lock
