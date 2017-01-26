@@ -20,6 +20,10 @@ matrix:
 git:
   depth: 1
 
+branches:
+  only:
+    - master
+
 sudo: false
 cache:
   directories:
@@ -30,9 +34,4 @@ install:
 script:
   - test $TRAVIS_PHP_VERSION = $COVERAGE_VERSION && phpunit || phpunit --no-coverage
 after_success:
-  - test $TRAVIS_PHP_VERSION = $COVERAGE_VERSION && {
-      travis_retry coveralls --no-interaction &
-      travis_retry test-reporter --no-interaction &
-      travis_retry ocular code-coverage:upload --format=php-clover build/logs/clover.xml &
-      wait
-    }
+  - bash .travis_after_success.sh

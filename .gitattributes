@@ -6,6 +6,7 @@
 *.php               text eol=lf diff=php
 *.xml.dist          text eol=lf
 
+/resources/travis/  export-ignore
 /test/              export-ignore
 /.codeclimate.yml   export-ignore
 /.editorconfig      export-ignore
