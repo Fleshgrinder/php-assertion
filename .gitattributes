@@ -8,7 +8,8 @@
 *.sh                    text eol=lf
 *.xml.dist              text eol=lf
 
-/resources/travis-ci/   export-ignore
+/bin/travis/            export-ignore
+/config/phpmd/          export-ignore
 /test/                  export-ignore
 /.codeclimate.yml       export-ignore
 /.editorconfig          export-ignore

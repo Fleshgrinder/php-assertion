@@ -34,4 +34,4 @@ install:
 script:
   - test $TRAVIS_PHP_VERSION = $COVERAGE_VERSION && phpunit || phpunit --no-coverage
 after_success:
-  - test $TRAVIS_PHP_VERSION = $COVERAGE_VERSION && bash resources/travis-ci/after_success.bash
+  - test $TRAVIS_PHP_VERSION = $COVERAGE_VERSION && bash bin/travis/after_success.bash
