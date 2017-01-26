@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Richard Fussenegger <fleshgrinder@users.noreply.github.com>
- * @copyright 2016 Richard Fussenegger
+ * @copyright 2016–2017 Richard Fussenegger
  * @license MIT
  */
 
@@ -57,7 +57,7 @@ abstract class Variable {
 	final public static function applyCallback($var, callable $callback, $pass_delta = true) {
 		assert('is_bool($pass_delta)', 'Third argument must be of type bool.');
 
-		if (static::isTraversable($var)) {
+		if (is_iterable($var)) {
 			foreach ($var as $delta => $member) {
 				if (($pass_delta ? $callback($member, $delta) : $callback($member)) === false) {
 					return false;
@@ -190,6 +190,17 @@ abstract class Variable {
 	}
 
 	/**
+	 * Assert variable contains iterables only.
+	 *
+	 * @see is_iterable()
+	 * @param mixed $var
+	 * @return bool
+	 */
+	final public static function hasIterablesOnly($var) {
+		return static::applyCallback($var, 'is_iterable');
+	}
+
+	/**
 	 * Assert variable contains all keys.
 	 *
 	 * @see array_key_exists()
@@ -198,7 +209,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function hasKeys($var, ...$keys) {
-		if (static::isTraversable($var) && !empty($var)) {
+		if (is_iterable($var) && !empty($var)) {
 			foreach ($keys as $key) {
 				if (!array_key_exists($key, $var)) {
 					return false;
@@ -417,11 +428,14 @@ abstract class Variable {
 	/**
 	 * Assert variable contains traversables only.
 	 *
+	 * @deprecated Use {@see hasIterablesOnly} instead.
 	 * @see isTraversable()
 	 * @param mixed $var
 	 * @return bool
 	 */
 	final public static function hasTraversablesOnly($var) {
+		@trigger_error('Use Variable::hasIterablesOnly() instead.', E_USER_DEPRECATED);
+
 		return static::applyCallback($var, [__CLASS__, 'isTraversable']);
 	}
 
@@ -660,11 +674,14 @@ abstract class Variable {
 	/**
 	 * Assert variable is traversable (array or instance of {@see Traversable}).
 	 *
+	 * @deprecated Use {@see is_iterable} instead.
 	 * @param mixed $var
 	 * @return bool
 	 */
 	final public static function isTraversable($var) {
-		return is_array($var) || $var instanceof Traversable;
+		@trigger_error('Use is_iterable() instead.', E_USER_DEPRECATED);
+
+		return is_iterable($var);
 	}
 
 	/**

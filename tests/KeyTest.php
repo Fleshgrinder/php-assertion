@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Richard Fussenegger <fleshgrinder@users.noreply.github.com>
- * @copyright 2016 Richard Fussenegger
+ * @copyright 2016–2017 Richard Fussenegger
  * @license MIT
  */
 
@@ -11,7 +11,6 @@ use Variable;
 
 /**
  * @covers \Variable::hasKeys()
- * @uses \Variable::isTraversable()
  */
 final class KeyTest extends VariableDataTypeTest {
 
