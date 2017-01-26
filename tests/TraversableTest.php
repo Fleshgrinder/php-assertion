@@ -13,6 +13,7 @@ namespace Fleshgrinder\Assertion;
  * @uses \Variable::applyCallback()
  */
 final class TraversableTest extends VariableTest {
+	use DisableDeprecationErrors;
 
 	/** @inheritDoc */
 	protected function getMethodName() {

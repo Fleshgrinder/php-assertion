@@ -43,13 +43,10 @@
 	"scripts": {
 		"clean": "rm -fr build/ vendor/ composer.lock",
 		"test": "phpx vendor/phpunit/phpunit/phpunit --colors=always",
-		"test-56": "php56x vendor/phpunit/phpunit/phpunit --colors=always",
-		"test-70": "php70x vendor/phpunit/phpunit/phpunit --colors=always",
-		"test-71": "php71x vendor/phpunit/phpunit/phpunit --colors=always",
 		"test-all": [
-			"@test-56",
-			"@test-70",
-			"@test-71"
+			"php56x vendor/phpunit/phpunit/phpunit --colors=always --no-coverage",
+			"php70x vendor/phpunit/phpunit/phpunit --colors=always --no-coverage",
+			"@test"
 		],
 		"test-dbg": "phpdbg -qrr vendor/phpunit/phpunit/phpunit --colors=always"
 	},

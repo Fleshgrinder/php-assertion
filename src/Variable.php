@@ -197,7 +197,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function hasIterablesOnly($var) {
-		return static::applyCallback($var, 'is_iterable');
+		return static::applyCallback($var, 'is_iterable', false);
 	}
 
 	/**
