@@ -5,16 +5,7 @@ filter:
 checks:
   php: true
 
-coding_style:
-  php: { }
-
-build:
-  environment:
-    php:
-      version: 7.1.0
-    tests:
-      override:
-        - command: 'phpunit'
-          coverage:
-            file: 'build/logs/clover.xml'
-            format: 'clover'
+tools:
+  external_code_coverage:
+    timeout: 600
+    runs: 3

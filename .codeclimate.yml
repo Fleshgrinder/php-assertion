@@ -11,8 +11,13 @@ engines:
       standard: PSR1
   phpmd:
     enabled: true
+    config:
+      file_extensions: php
+      rulesets: ""
+
 ratings:
   paths:
     - "**.php"
+
 exlude_paths:
   - "vendor/"

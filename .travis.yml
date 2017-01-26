@@ -40,3 +40,4 @@ script:
 after_success:
   - if [ -z $COVERAGE ]; then travis_retry coveralls --no-interaction; fi;
   - if [ -z $COVERAGE ]; then travis_retry test-reporter --no-interaction; fi;
+  - if [ -z $COVERAGE ]; then travis_retry ocular code-coverage:upload --format=php-clover build/logs/clover.xml; fi;
