@@ -5,7 +5,7 @@
 	backupGlobals="false"
 	backupStaticAttributes="false"
 	beStrictAboutChangesToGlobalState="true"
-	beStrictAboutCoversAnnotation="false"
+	beStrictAboutCoversAnnotation="true"
 	beStrictAboutOutputDuringTests="true"
 	beStrictAboutResourceUsageDuringSmallTests="true"
 	beStrictAboutTestsThatDoNotTestAnything="true"

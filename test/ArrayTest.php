@@ -7,6 +7,11 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasArraysOnly()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class ArrayTest extends VariableTest {
 
 	/** @inheritDoc */

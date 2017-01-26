@@ -7,6 +7,12 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasStringsWithContentOnly()
+ * @covers \Variable::isStringWithContent()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class StringsWithContentTest extends VariableTest {
 
 	/** @inheritDoc */

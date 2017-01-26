@@ -7,6 +7,11 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasObjectsOnly()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class ObjectTest extends VariableTest {
 
 	/** @inheritDoc */

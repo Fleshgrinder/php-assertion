@@ -40,6 +40,7 @@
         }
     },
 	"scripts": {
+		"clean": "rm -fr build/ vendor/ composer.lock",
 		"test": "phpx vendor/phpunit/phpunit/phpunit --colors=always",
 		"test-56": "php56x vendor/phpunit/phpunit/phpunit --colors=always",
 		"test-70": "php70x vendor/phpunit/phpunit/phpunit --colors=always",

@@ -9,6 +9,10 @@ namespace Fleshgrinder\Assertion;
 
 use Variable;
 
+/**
+ * @covers \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class ApplyCallbackTest extends VariableDataTypeTest {
 
 	public function testWithDelta() {

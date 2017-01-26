@@ -13,6 +13,12 @@ final class SubclassTestChildClass extends SubclassTestParentClass {}
 
 use Variable;
 
+/**
+ * @covers \Variable::hasSubclassesOfOnly()
+ * @covers \Variable::isSubclassOf()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class SubclassTest extends VariableDataTypeTest {
 
 	/** @inheritDoc */

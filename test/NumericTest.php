@@ -7,6 +7,11 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasNumericsOnly()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class NumericTest extends VariableTest {
 
 	/** @inheritDoc */

@@ -9,6 +9,10 @@ namespace Fleshgrinder\Assertion;
 
 use Variable;
 
+/**
+ * @covers \Variable::hasKeys()
+ * @uses \Variable::isTraversable()
+ */
 final class KeyTest extends VariableDataTypeTest {
 
 	public function testHasKeys() {

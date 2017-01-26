@@ -7,6 +7,12 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasStringablesOnly()
+ * @covers \Variable::isStringable()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class StringableTest extends VariableTest {
 
 	/** @inheritDoc */

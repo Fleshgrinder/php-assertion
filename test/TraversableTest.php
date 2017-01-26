@@ -7,6 +7,11 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasTraversablesOnly()
+ * @covers \Variable::isTraversable()
+ * @uses \Variable::applyCallback()
+ */
 final class TraversableTest extends VariableTest {
 
 	/** @inheritDoc */

@@ -7,6 +7,11 @@
 
 namespace Fleshgrinder\Assertion;
 
+/**
+ * @covers \Variable::hasFloatsOnly()
+ * @uses \Variable::applyCallback()
+ * @uses \Variable::isTraversable()
+ */
 final class FloatTest extends VariableTest {
 
 	/** @inheritDoc */
