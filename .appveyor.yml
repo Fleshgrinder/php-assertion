@@ -37,6 +37,7 @@ install:
   - IF %PHP%==1 ECHO extension_dir=ext >> php.ini
   - IF %PHP%==1 ECHO extension=php_gmp.dll >> php.ini
   - IF %PHP%==1 ECHO extension=php_mbstring.dll >> php.ini
+  - IF %PHP%==1 ECHO extension=php_openssl.dll >> php.ini
   - IF %PHP%==1 ECHO @php %%~dp0composer.phar %%* > composer.bat
   - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
   - CD %APPVEYOR_BUILD_FOLDER%
