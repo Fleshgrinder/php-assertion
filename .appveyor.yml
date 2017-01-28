@@ -37,10 +37,9 @@ install:
   - ECHO extension=php_gmp.dll >> php.ini
   - ECHO extension=php_mbstring.dll >> php.ini
   - ECHO extension=php_openssl.dll >> php.ini
-  - ECHO @php %PHP_DIR%\composer.phar %* > composer.bat
   - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
   - CD %APPVEYOR_BUILD_FOLDER%
-  - composer update --classmap-authoritative --no-interaction --no-progress --no-suggest --prefer-dist
+  - php %PHP_DIR%\composer.phar update --classmap-authoritative --no-interaction --no-progress --no-suggest --prefer-dist
 
 test_script:
   - CD %APPVEYOR_BUILD_FOLDER%
