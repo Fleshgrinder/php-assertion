@@ -8,6 +8,7 @@
 *.sh                    text eol=lf
 *.xml.dist              text eol=lf
 
+/.idea/                 export-ignore
 /bin/travis/            export-ignore
 /config/phpmd/          export-ignore
 /tests/                 export-ignore
