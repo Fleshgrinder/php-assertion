@@ -11,6 +11,7 @@
 /bin/travis/            export-ignore
 /config/phpmd/          export-ignore
 /tests/                 export-ignore
+/.appveyor.yml          export-ignore
 /.codeclimate.yml       export-ignore
 /.editorconfig          export-ignore
 /.gitattributes         export-ignore

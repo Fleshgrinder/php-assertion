@@ -1,0 +1,47 @@
+build: false
+platform: x64
+clone_folder: C:\Projects\Fleshgrinder\php-assertion
+
+branches:
+  only:
+    - master
+
+cache:
+  - '%LOCALAPPDATA%\Composer\files -> composer.lock'
+
+clone_depth: 1
+
+environment:
+  global:
+    COMPOSER_NO_INTERACTION: 1
+    PATH: '%PHP_DIR%;%APPVEYOR_BUILD_FOLDER%\vendor\bin;%PATH%'
+    PHP: 1
+    PHP_DIR: C:\tools\php
+  matrix:
+    - PHP_VERSION: 5.6
+    - PHP_VERSION: 7.0
+    - PHP_VERSION: 7.1
+
+matrix:
+  fast_finish: true
+
+pull_requests:
+  do_not_increment_build_number: true
+
+install:
+  - IF EXIST %PHP_DIR% (SET PHP=0)
+  - ps: appveyor-retry cinst --ignore-checksums -y php --version ((choco search php --exact --all-versions -r | select-string -pattern $Env:PHP_VERSION | Select-Object -first 1) -replace '[php|]','')
+  - CD %PHP_DIR%
+  - IF %PHP%==1 COPY /Y php.ini-development php.ini
+  - IF %PHP%==1 ECHO data.timezone="UTC" >> php.ini
+  - IF %PHP%==1 ECHO extension_dir=ext >> php.ini
+  - IF %PHP%==1 ECHO extension=php_gmp.dll >> php.ini
+  - IF %PHP%==1 ECHO extension=php_mbstring.dll >> php.ini
+  - IF %PHP%==1 ECHO @php %%~dp0composer.phar %%* > composer.bat
+  - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
+  - CD %APPVEYOR_BUILD_FOLDER%
+  - composer update --classmap-authoritative --no-interaction --no-progress --no-suggest --prefer-dist
+
+test_script:
+  - CD %APPVEYOR_BUILD_FOLDER%
+  - phpunit --no-coverage
