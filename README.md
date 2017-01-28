@@ -1,8 +1,8 @@
-[![Latest Stable Version](https://poser.pugx.org/fleshgrinder/assertion/v/stable)](https://packagist.org/packages/fleshgrinder/assertion?format=flat-square)
-[![Total Downloads](https://poser.pugx.org/fleshgrinder/assertion/downloads)](https://packagist.org/packages/fleshgrinder/assertion?format=flat-square)
-[![Latest Unstable Version](https://poser.pugx.org/fleshgrinder/assertion/v/unstable)](https://packagist.org/packages/fleshgrinder/assertion?format=flat-square)
-[![License](https://poser.pugx.org/fleshgrinder/assertion/license)](https://packagist.org/packages/fleshgrinder/assertion?format=flat-square)
-[![composer.lock](https://poser.pugx.org/fleshgrinder/assertion/composerlock)](https://packagist.org/packages/fleshgrinder/assertion?format=flat-square)
+[![Latest Stable Version](https://poser.pugx.org/fleshgrinder/assertion/v/stable?format=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
+[![Total Downloads](https://poser.pugx.org/fleshgrinder/assertion/downloads?format=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
+[![Latest Unstable Version](https://poser.pugx.org/fleshgrinder/assertion/v/unstable?format=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
+[![License](https://poser.pugx.org/fleshgrinder/assertion/license?format=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
+[![composer.lock](https://poser.pugx.org/fleshgrinder/assertion/composerlock?format=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
 
 [![Travis](https://img.shields.io/travis/Fleshgrinder/php-assertion.svg?style=flat-square)](https://travis-ci.org/Fleshgrinder/php-assertion)
 [![HHVM](https://img.shields.io/hhvm/fleshgrinder/assertion.svg?style=flat-square)](http://hhvm.h4cc.de/package/fleshgrinder/assertion)
