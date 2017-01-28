@@ -1,16 +1,16 @@
-[![Latest Stable Version](https://poser.pugx.org/fleshgrinder/assertion/v/stable?format=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
-[![Latest Unstable Version](https://poser.pugx.org/fleshgrinder/assertion/v/unstable?format=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
-[![Travis](https://img.shields.io/travis/Fleshgrinder/php-assertion.svg?style=flat-square)](https://travis-ci.org/Fleshgrinder/php-assertion)
+[![Latest Stable Version](https://poser.pugx.org/fleshgrinder/assertion/v/stable)](https://packagist.org/packages/fleshgrinder/assertion)
+[![Latest Unstable Version](https://poser.pugx.org/fleshgrinder/assertion/v/unstable)](https://packagist.org/packages/fleshgrinder/assertion)
+[![Travis](https://img.shields.io/travis/Fleshgrinder/php-assertion.svg)](https://travis-ci.org/Fleshgrinder/php-assertion)
 [![Build status](https://ci.appveyor.com/api/projects/status/dfyfacv59mpmmhdt/branch/master?svg=true)](https://ci.appveyor.com/project/Fleshgrinder/php-assertion/branch/master)
-[![HHVM](https://img.shields.io/hhvm/fleshgrinder/assertion.svg?style=flat-square)](http://hhvm.h4cc.de/package/fleshgrinder/assertion)
-[![License](https://poser.pugx.org/fleshgrinder/assertion/license?format=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
-[![Total Downloads](https://poser.pugx.org/fleshgrinder/assertion/downloads?format=flat-square)](https://packagist.org/packages/fleshgrinder/assertion)
+[![HHVM](https://img.shields.io/hhvm/fleshgrinder/assertion.svg)](http://hhvm.h4cc.de/package/fleshgrinder/assertion)
+[![License](https://poser.pugx.org/fleshgrinder/assertion/license)](https://packagist.org/packages/fleshgrinder/assertion)
+[![Total Downloads](https://poser.pugx.org/fleshgrinder/assertion/downloads)](https://packagist.org/packages/fleshgrinder/assertion)
 
-[![Coveralls branch](https://img.shields.io/coveralls/Fleshgrinder/php-assertion/master.svg?style=flat-square)](https://coveralls.io/github/Fleshgrinder/php-assertion)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/Fleshgrinder/php-assertion.svg?style=flat-square)](https://scrutinizer-ci.com/g/Fleshgrinder/php-assertion/)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/61540e8e-2ca9-4102-bd43-3b9c5a0a38e2.svg?style=flat-square)](https://insight.sensiolabs.com/projects/61540e8e-2ca9-4102-bd43-3b9c5a0a38e2)
-[![Code Climate](https://img.shields.io/codeclimate/github/Fleshgrinder/php-assertion.svg?style=flat-square)](https://codeclimate.com/github/Fleshgrinder/php-assertion)
-[![Code Climate](https://img.shields.io/codeclimate/issues/github/Fleshgrinder/php-assertion.svg?style=flat-square)](https://codeclimate.com/github/Fleshgrinder/php-assertion)
+[![Coveralls branch](https://img.shields.io/coveralls/Fleshgrinder/php-assertion/master.svg)](https://coveralls.io/github/Fleshgrinder/php-assertion)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/Fleshgrinder/php-assertion.svg)](https://scrutinizer-ci.com/g/Fleshgrinder/php-assertion/)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/61540e8e-2ca9-4102-bd43-3b9c5a0a38e2.svg)](https://insight.sensiolabs.com/projects/61540e8e-2ca9-4102-bd43-3b9c5a0a38e2)
+[![Code Climate](https://img.shields.io/codeclimate/github/Fleshgrinder/php-assertion.svg)](https://codeclimate.com/github/Fleshgrinder/php-assertion)
+[![Code Climate](https://img.shields.io/codeclimate/issues/github/Fleshgrinder/php-assertion.svg)](https://codeclimate.com/github/Fleshgrinder/php-assertion)
 # PHP Assertions
 Library to ease defensive and design by contract (DbC) programming with [`assert()`](https://secure.php.net/assert) in PHP.
 
