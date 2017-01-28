@@ -13,7 +13,7 @@ clone_depth: 1
 
 environment:
   global:
-    PATH: '%PHP_DIR%;%PATH%'
+    PATH: 'C:\tools\php;%PATH%'
     PHP_DIR: C:\tools\php
   matrix:
     - PHP_VERSION: 5.6
