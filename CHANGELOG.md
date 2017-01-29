@@ -12,6 +12,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Deprecated `Variable::hasTraversablesOnly` as well as
   `Variable::isTraversable` in favor of `Variable::hasIterablesOnly` and
   `is_iterable` respectively.
+- Moved `Variable` class to `Fleshgrinder\Assertions` namespace, backwards
+  compatibility is provided by a new `Variable` class which extends the old
+  one.
+### Removed
+- [GNU Multi Precision](https://php.net/gmp) dependency to validate big
+  integers. A regular expression is used instead now which works similar to
+  PHP’s integer parsing algorithm.
 
 ## [1.1.0] - 2016-03-17
 ### Added
@@ -24,4 +31,3 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [Unreleased]: https://github.com/fleshgrinder/php-assertion/compare/1.1.0...HEAD
 [1.1.0]: https://github.com/fleshgrinder/php-assertion/compare/v1.0.0...1.1.0
 [1.0.0]: https://github.com/fleshgrinder/php-assertion/compare/v1.0.0...1.1.0
-

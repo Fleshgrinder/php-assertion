@@ -29,19 +29,6 @@ This command requires you to have Composer installed globally, as explained in t
  is installed as a dependency of another library. You want your assertions to be executed at all times, except when the
  full application goes into production; which is managed through the [configuration](#configuration).
 
-### Big Integers
-The PHP extension [GNU Multiple Precision](https://secure.php.net/gmp) is required to validate big integer numbers.
- It is not required but a `E_USER_NOTICE` error is triggered if a big integer is encountered and the extension is not
- available. The installation on [Debian](https://www.debian.org/) based systems is usually as easy as executing
- `apt-get install php5-gmp` if PHP was installed from the official packages. The required _dll_ is already present on
- Windows systems and only needs to be loaded in the global PHP configuration. Refer to the
- [installation page of the extension](https://secure.php.net/gmp.installation) if you compile PHP yourself.
-
-### Big Floats
-The PHP extension [BC Math](https://secure.php.net/bcmath) is required to validate big float numbers. It is not required
- but a `E_USER_NOTICE` error is triggered if a big float is encountered and the extension is not available. PHP must be
- compiled with the `--enable-bcmath` flag and the extension is always loaded on Windows systems.
-
 ## Usage
 This library provides a single purely static class that can be used in assertions to ease repetitive scalar inspections
  as well as writing custom inspections on top of it. The following code example illustrates the basic usage:
@@ -58,6 +45,11 @@ assert($var === null || Variable::isInteger($var), 'variable must be NULL or an 
 assert($var === null || Variable::isNaturalNumber($var), 'variable must be NULL or a natural number (ℕ₀)');
 assert($var === null || Variable::isScalarPositiveNaturalNumber($var), 'variable must be NULL or a positive natural number (ℕ₁) of type int');
 ```
+
+### Big Floats
+The PHP extension [BC Math](https://secure.php.net/bcmath) is required to validate big float numbers. It is not required
+ but a `E_USER_NOTICE` error is triggered if a big float is encountered and the extension is not available. PHP must be
+ compiled with the `--enable-bcmath` flag and the extension is always loaded on Windows systems.
 
 ### Defensive Programming / Design by Contract
 > “**Be polite, Never Assert**
