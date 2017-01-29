@@ -5,9 +5,7 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
-
-use Variable;
+namespace Fleshgrinder\Assertions;
 
 abstract class VariableTest extends VariableDataTypeTest {
 

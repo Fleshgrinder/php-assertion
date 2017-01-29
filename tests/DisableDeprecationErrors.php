@@ -1,6 +1,6 @@
 <?php
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 trait DisableDeprecationErrors {
 

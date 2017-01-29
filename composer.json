@@ -25,16 +25,22 @@
         "ext-bcmath": "For asserting arbitrary precision numbers."
     },
     "autoload": {
-		"psr-4": {
-			"Fleshgrinder\\Assertion\\": "src/"
-		},
 		"classmap": [
-			"src/Variable.php"
-		]
+			"src/BackwardsCompatibility/Variable.php"
+		],
+		"psr-4": {
+			"Fleshgrinder\\Assertions\\": [
+				"src/",
+				"tests/"
+			]
+		}
     },
     "autoload-dev": {
+		"classmap": [
+			"src/BackwardsCompatibility/Variable.php"
+		],
         "psr-4": {
-            "Fleshgrinder\\Assertion\\": [
+            "Fleshgrinder\\Assertions\\": [
 				"src/",
 				"tests/"
 			]

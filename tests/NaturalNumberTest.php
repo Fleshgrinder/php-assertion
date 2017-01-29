@@ -5,15 +5,14 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::gmpCreate()
- * @covers \Variable::hasNaturalNumbersOnly()
- * @covers \Variable::isNaturalNumber()
- * @covers \Variable::setWarningHandler()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::gmpCreate()
+ * @covers \Fleshgrinder\Assertions\Variable::hasNaturalNumbersOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isNaturalNumber()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class NaturalNumberTest extends VariableTest {
 

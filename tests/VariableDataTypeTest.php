@@ -5,12 +5,12 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 use ArrayObject;
 use PHPUnit_Framework_TestCase;
 use SplFixedArray;
-use Variable;
+use Fleshgrinder\Assertions\Variable;
 
 final class Stringable {
 

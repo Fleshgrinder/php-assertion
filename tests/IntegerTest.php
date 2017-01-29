@@ -5,15 +5,14 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::gmpCreate()
- * @covers \Variable::hasIntegersOnly()
- * @covers \Variable::isInteger()
- * @covers \Variable::setWarningHandler()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::gmpCreate()
+ * @covers \Fleshgrinder\Assertions\Variable::hasIntegersOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isInteger()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class IntegerTest extends VariableTest {
 

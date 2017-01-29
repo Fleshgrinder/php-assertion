@@ -5,13 +5,13 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasScalarPositiveNaturalNumbersOnly()
- * @covers \Variable::isScalarPositiveNaturalNumber()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasScalarPositiveNaturalNumbersOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isScalarPositiveNaturalNumber()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class ScalarPositiveNaturalNumberTest extends VariableTest {
 

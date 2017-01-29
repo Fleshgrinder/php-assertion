@@ -5,11 +5,11 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasIterablesOnly()
- * @uses \Variable::applyCallback()
+ * @covers \Fleshgrinder\Assertions\Variable::hasIterablesOnly()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
  */
 final class IterableTest extends VariableTest {
 

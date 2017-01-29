@@ -5,13 +5,11 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
-
-use Variable;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class ApplyCallbackTest extends VariableDataTypeTest {
 

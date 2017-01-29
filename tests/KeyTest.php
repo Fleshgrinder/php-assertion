@@ -5,12 +5,10 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
-
-use Variable;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasKeys()
+ * @covers \Fleshgrinder\Assertions\Variable::hasKeys()
  */
 final class KeyTest extends VariableDataTypeTest {
 

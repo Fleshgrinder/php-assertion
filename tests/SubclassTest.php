@@ -5,19 +5,19 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 class SubclassTestParentClass {}
 
 final class SubclassTestChildClass extends SubclassTestParentClass {}
 
-use Variable;
+use Fleshgrinder\Assertions\Variable;
 
 /**
- * @covers \Variable::hasSubclassesOfOnly()
- * @covers \Variable::isSubclassOf()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasSubclassesOfOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isSubclassOf()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class SubclassTest extends VariableDataTypeTest {
 

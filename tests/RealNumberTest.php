@@ -5,14 +5,14 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasRealNumbersOnly()
- * @covers \Variable::isRealNumber()
- * @covers \Variable::isScalarNaturalNumber()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasRealNumbersOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isRealNumber()
+ * @covers \Fleshgrinder\Assertions\Variable::isScalarNaturalNumber()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class RealNumberTest extends VariableTest {
 

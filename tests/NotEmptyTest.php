@@ -5,14 +5,14 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
  * This test illustrates nicely how dangerous PHP’s {@see empty} is if the caller does not know what he really wants.
  *
- * @covers \Variable::hasNoEmptyValues()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasNoEmptyValues()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class NotEmptyTest extends VariableTest {
 

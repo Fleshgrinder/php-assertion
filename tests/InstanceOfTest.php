@@ -5,17 +5,17 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 final class InstanceOfTestHelperClass {}
 
-use Variable;
+use Fleshgrinder\Assertions\Variable;
 
 /**
- * @covers \Variable::hasInstancesOfOnly()
- * @covers \Variable::isInstanceOf()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasInstancesOfOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isInstanceOf()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class InstanceOfTest extends VariableDataTypeTest {
 

@@ -5,6 +5,8 @@
  * @license MIT
  */
 
+namespace Fleshgrinder\Assertions;
+
 /**
  * The variable global static class can be used within {@see assert()} calls to examine variables. All methods return
  * `TRUE` if the given argument complies with the examination rules and `FALSE` if not. Refer to the package’s README
@@ -58,6 +60,7 @@ abstract class Variable {
 		assert('is_bool($pass_delta)', 'Third argument must be of type bool.');
 
 		if (is_iterable($var)) {
+			/** @noinspection ForeachSourceInspection */
 			foreach ($var as $delta => $member) {
 				if (($pass_delta ? $callback($member, $delta) : $callback($member)) === false) {
 					return false;
@@ -97,7 +100,7 @@ abstract class Variable {
 	 */
 	final public static function hasAllSet($var) {
 		return static::applyCallback($var, function ($member) {
-			return isset($member);
+			return $member !== \null;
 		});
 	}
 
@@ -157,7 +160,7 @@ abstract class Variable {
 	 */
 	final public static function hasInstancesOfOnly($var, $class, $allow_string = true) {
 		if (is_object($class)) {
-			$class = get_class(($class));
+			$class = get_class($class);
 		}
 
 		return static::applyCallback($var, function ($member) use ($class, $allow_string) {
@@ -205,11 +208,11 @@ abstract class Variable {
 	 *
 	 * @see array_key_exists()
 	 * @param mixed $var
-	 * @param mixed $keys
+	 * @param string[] ...$keys
 	 * @return bool
 	 */
 	final public static function hasKeys($var, ...$keys) {
-		if (is_iterable($var) && !empty($var)) {
+		if (is_iterable($var)) {
 			foreach ($keys as $key) {
 				if (!array_key_exists($key, $var)) {
 					return false;
@@ -417,7 +420,7 @@ abstract class Variable {
 	 */
 	final public static function hasSubclassesOfOnly($var, $class, $allow_string = true) {
 		if (is_object($class)) {
-			$class = get_class(($class));
+			$class = get_class($class);
 		}
 
 		return static::applyCallback($var, function ($member) use ($class, $allow_string) {
@@ -453,7 +456,7 @@ abstract class Variable {
 		assert('is_bool($allow_string)', 'third argument must be of type bool');
 
 		if (is_object($class)) {
-			$class = get_class(($class));
+			$class = get_class($class);
 		}
 
 		return is_a($var, $class, $allow_string);
@@ -473,7 +476,7 @@ abstract class Variable {
 				return true;
 			}
 
-			if (is_string($var) && self::gmpCreate($var) instanceof GMP) {
+			if (is_string($var) && self::gmpCreate($var) instanceof \GMP) {
 				return true;
 			}
 		}
@@ -495,7 +498,7 @@ abstract class Variable {
 				return $var > -1;
 			}
 
-			if (is_string($var) && ($gmp = self::gmpCreate($var)) instanceof GMP) {
+			if (is_string($var) && ($gmp = self::gmpCreate($var)) instanceof \GMP) {
 				return gmp_cmp($gmp, -1) > -1;
 			}
 		}
@@ -517,7 +520,7 @@ abstract class Variable {
 				return $var > 0;
 			}
 
-			if (is_string($var) && ($gmp = self::gmpCreate($var)) instanceof GMP) {
+			if (is_string($var) && ($gmp = self::gmpCreate($var)) instanceof \GMP) {
 				return gmp_cmp($gmp, 0) > -1;
 			}
 		}
@@ -604,7 +607,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isStrictArray($var) {
-		if ($var instanceof SplFixedArray) {
+		if ($var instanceof \SplFixedArray) {
 			return true;
 		}
 
@@ -706,7 +709,7 @@ abstract class Variable {
 	 * This method triggers an error of severity `E_USER_NOTICE` if {@see GMP} is not installed.
 	 *
 	 * @param mixed $number
-	 * @return false|GMP
+	 * @return false|\GMP
 	 */
 	private static function gmpCreate($number) {
 		if (!function_exists('gmp_init')) {
@@ -722,7 +725,9 @@ abstract class Variable {
 			$number = substr($number, 1);
 		}
 
-		self::setWarningHandler();
+		set_error_handler(function ($severity, $message, $filename, $line_number) {
+			throw new \ErrorException($message, 0, $severity, $filename, $line_number);
+		}, E_WARNING);
 
 		try {
 			$gmp = gmp_init($number);
@@ -733,24 +738,12 @@ abstract class Variable {
 
 			return $gmp;
 		}
-		catch (ErrorException $e) {
+		catch (\ErrorException $e) {
 			return false;
 		}
 		finally {
 			restore_error_handler();
 		}
-	}
-
-	/**
-	 * Register error handler to throw an {@see ErrorException} if an `E_WARNING` is triggered. Caller must restore
-	 * error handler in finally block.
-	 *
-	 * @return void
-	 */
-	private static function setWarningHandler() {
-		set_error_handler(function ($severity, $message, $filename, $line_number) {
-			throw new ErrorException($message, 0, $severity, $filename, $line_number);
-		}, E_WARNING);
 	}
 
 }

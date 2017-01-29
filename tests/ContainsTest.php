@@ -5,15 +5,13 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
-
-use Variable;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::allContain()
- * @covers \Variable::contains()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::allContain()
+ * @covers \Fleshgrinder\Assertions\Variable::contains()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class ContainsTest extends VariableDataTypeTest {
 

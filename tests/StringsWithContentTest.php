@@ -5,13 +5,13 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasStringsWithContentOnly()
- * @covers \Variable::isStringWithContent()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasStringsWithContentOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isStringWithContent()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class StringsWithContentTest extends VariableTest {
 
