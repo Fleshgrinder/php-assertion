@@ -13,7 +13,7 @@ namespace Fleshgrinder\Assertions;
  */
 final class ApplyCallbackTest extends VariableDataTypeTest {
 
-	public function testWithDelta() {
+	public static function testWithDelta() {
 		$correctly_called = 0;
 		$data = ['a', 'b'];
 		Variable::applyCallback($data, function ($member, $delta) use (&$correctly_called, $data) {
@@ -21,10 +21,16 @@ final class ApplyCallbackTest extends VariableDataTypeTest {
 				++$correctly_called;
 			}
 		});
-		$this->assertSame(2, $correctly_called);
+		static::assertSame(2, $correctly_called);
 	}
 
-	public function testWithoutDelta() {
+	public static function testWithDeltaFailure() {
+		static::assertFalse(Variable::applyCallback([1], function () {
+			return \false;
+		}));
+	}
+
+	public static function testWithoutDelta() {
 		$correctly_called = 0;
 		$data = ['a', 'b'];
 		$i = 0;
@@ -33,7 +39,13 @@ final class ApplyCallbackTest extends VariableDataTypeTest {
 				++$correctly_called;
 			}
 		}, false);
-		$this->assertSame(2, $correctly_called);
+		static::assertSame(2, $correctly_called);
+	}
+
+	public static function testWithoutDeltaFailure() {
+		static::assertFalse(Variable::applyCallback([1], function () {
+			return \false;
+		}), \false);
 	}
 
 	/** @dataProvider dataProviderDataTypes */

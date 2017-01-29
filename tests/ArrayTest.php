@@ -24,4 +24,18 @@ final class ArrayTest extends VariableTest {
 		return ['empty_array', 'array', 'dictionary', 'callable_method'];
 	}
 
+	/**
+	 * @covers \Fleshgrinder\Assertions\Variable::hasAllSet()
+	 */
+	public static function testHasAllSet() {
+		static::assertTrue(Variable::hasAllSet([1, 2, 3]));
+	}
+
+	/**
+	 * @covers \Fleshgrinder\Assertions\Variable::hasAllSet()
+	 */
+	public static function testHasAllSetWithUnset() {
+		static::assertFalse(Variable::hasAllSet([1, \null, 3]));
+	}
+
 }

@@ -664,14 +664,21 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isSubclassOf($var, $class, $allow_string = true) {
-		assert('is_object($class) || is_string($class)', 'second argument must be of type object or string');
+		assert('is_object($class) || (is_string($class) && class_exists($class))', 'second argument must be an object or the name of an existing class');
 		assert('is_bool($allow_string)', 'third argument must be of type bool');
 
-		if (is_object($class)) {
-			$class = get_class($class);
+		$str = \is_string($var);
+
+		if (\is_object($var) === \false && $str === \false) {
+			return \false;
 		}
 
-		return is_subclass_of($var, $class, $allow_string);
+		if ($str && ($allow_string === \false || \class_exists($var) === \false)) {
+			return \false;
+		}
+
+		/** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+		return (new \ReflectionClass($var))->isSubclassOf(new \ReflectionClass($class));
 	}
 
 	/**
@@ -730,13 +737,7 @@ abstract class Variable {
 		}, E_WARNING);
 
 		try {
-			$gmp = gmp_init($number);
-
-			if (gmp_strval($gmp) !== $number) {
-				return false;
-			}
-
-			return $gmp;
+			return gmp_init($number);
 		}
 		catch (\ErrorException $e) {
 			return false;
