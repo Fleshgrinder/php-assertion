@@ -7,12 +7,6 @@
 
 namespace Fleshgrinder\Assertions;
 
-class SubclassTestParentClass {}
-
-final class SubclassTestChildClass extends SubclassTestParentClass {}
-
-use Fleshgrinder\Assertions\Variable;
-
 /**
  * @covers \Fleshgrinder\Assertions\Variable::hasSubclassesOfOnly()
  * @covers \Fleshgrinder\Assertions\Variable::isSubclassOf()
@@ -33,7 +27,7 @@ final class SubclassTest extends VariableDataTypeTest {
 
 	/** @dataProvider dataProviderDataTypes */
 	public function testAllDataTypes($var) {
-		$this->assertFalse(Variable::hasSubclassesOfOnly($var, '\stdClass'));
+		$this->assertFalse(Variable::hasSubclassesOfOnly($var, \stdClass::class));
 	}
 
 	public function testInstance() {

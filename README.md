@@ -9,8 +9,8 @@
 [![Coveralls branch](https://img.shields.io/coveralls/Fleshgrinder/php-assertion/master.svg)](https://coveralls.io/github/Fleshgrinder/php-assertion)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/Fleshgrinder/php-assertion.svg)](https://scrutinizer-ci.com/g/Fleshgrinder/php-assertion/)
 [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/61540e8e-2ca9-4102-bd43-3b9c5a0a38e2.svg)](https://insight.sensiolabs.com/projects/61540e8e-2ca9-4102-bd43-3b9c5a0a38e2)
-[![Code Climate](https://img.shields.io/codeclimate/github/Fleshgrinder/php-assertion.svg)](https://codeclimate.com/github/Fleshgrinder/php-assertion)
-[![Code Climate](https://img.shields.io/codeclimate/issues/github/Fleshgrinder/php-assertion.svg)](https://codeclimate.com/github/Fleshgrinder/php-assertion)
+[![Code Climate: GPA](https://img.shields.io/codeclimate/github/Fleshgrinder/php-assertion.svg)](https://codeclimate.com/github/Fleshgrinder/php-assertion)
+[![Code Climate: Issues](https://img.shields.io/codeclimate/issues/github/Fleshgrinder/php-assertion.svg)](https://codeclimate.com/github/Fleshgrinder/php-assertion/issues)
 # PHP Assertions
 Library to ease defensive and design by contract (DbC) programming with [`assert()`](https://secure.php.net/assert) in PHP.
 
