@@ -21,7 +21,6 @@
         "scrutinizer/ocular": "^1.3"
     },
     "suggest": {
-        "ext-gmp": "For asserting big integer numbers.",
         "ext-bcmath": "For asserting arbitrary precision numbers."
     },
     "autoload": {

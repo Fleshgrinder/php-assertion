@@ -471,17 +471,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isInteger($var) {
-		if (!is_float($var) && is_numeric($var)) {
-			if (filter_var($var, FILTER_VALIDATE_INT) !== false) {
-				return true;
-			}
-
-			if (is_string($var) && self::gmpCreate($var) instanceof \GMP) {
-				return true;
-			}
-		}
-
-		return false;
+		return !is_bool($var) && !is_float($var) && \filter_var($var, \FILTER_VALIDATE_INT) !== \false || static::matches($var, '/^(?:\+|-)?[1-9]\d*$/D');
 	}
 
 	/**
@@ -493,17 +483,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isNaturalNumber($var) {
-		if (!is_float($var) && is_numeric($var)) {
-			if (filter_var($var, FILTER_VALIDATE_INT) !== false) {
-				return $var > -1;
-			}
-
-			if (is_string($var) && ($gmp = self::gmpCreate($var)) instanceof \GMP) {
-				return gmp_cmp($gmp, -1) > -1;
-			}
-		}
-
-		return false;
+		return static::isInteger($var) && $var >= 0;
 	}
 
 	/**
@@ -515,17 +495,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isPositiveNaturalNumber($var) {
-		if (!is_float($var) && is_numeric($var)) {
-			if (filter_var($var, FILTER_VALIDATE_INT) !== false) {
-				return $var > 0;
-			}
-
-			if (is_string($var) && ($gmp = self::gmpCreate($var)) instanceof \GMP) {
-				return gmp_cmp($gmp, 0) > -1;
-			}
-		}
-
-		return false;
+		return static::isInteger($var) && $var >= 1;
 	}
 
 	/**
@@ -709,42 +679,6 @@ abstract class Variable {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Try to create GMP number, this method is used internally only to overcome some short coming of {@se gmp_init}.
-	 * This method triggers an error of severity `E_USER_NOTICE` if {@see GMP} is not installed.
-	 *
-	 * @param mixed $number
-	 * @return false|\GMP
-	 */
-	private static function gmpCreate($number) {
-		if (!function_exists('gmp_init')) {
-			trigger_error('GMP is not installed, cannot assert big integers.', E_USER_NOTICE);
-			return false;
-		}
-
-		if (preg_match('/^0+?[0-9]*/', $number) === 1) {
-			return false;
-		}
-
-		if (is_string($number) && $number{0} === '+') {
-			$number = substr($number, 1);
-		}
-
-		set_error_handler(function ($severity, $message, $filename, $line_number) {
-			throw new \ErrorException($message, 0, $severity, $filename, $line_number);
-		}, E_WARNING);
-
-		try {
-			return gmp_init($number);
-		}
-		catch (\ErrorException $e) {
-			return false;
-		}
-		finally {
-			restore_error_handler();
-		}
 	}
 
 }

@@ -8,11 +8,12 @@
 namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Fleshgrinder\Assertions\Variable::gmpCreate()
  * @covers \Fleshgrinder\Assertions\Variable::hasNaturalNumbersOnly()
  * @covers \Fleshgrinder\Assertions\Variable::isNaturalNumber()
  * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isInteger()
  * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
+ * @uses \Fleshgrinder\Assertions\Variable::matches()
  */
 final class NaturalNumberTest extends VariableTest {
 
