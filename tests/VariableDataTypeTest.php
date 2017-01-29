@@ -5,28 +5,9 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
-use ArrayObject;
-use PHPUnit_Framework_TestCase;
-use SplFixedArray;
-use Variable;
-
-final class Stringable {
-
-	private $string;
-
-	public function __construct($string) {
-		$this->string = $string;
-	}
-
-	public function __toString() {
-		return $this->string;
-	}
-
-}
-
-abstract class VariableDataTypeTest extends PHPUnit_Framework_TestCase {
+abstract class VariableDataTypeTest extends \PHPUnit_Framework_TestCase {
 
 	/** @var array */
 	protected static $data_types;
@@ -103,10 +84,10 @@ abstract class VariableDataTypeTest extends PHPUnit_Framework_TestCase {
 				'object'                     => [[(object) []]],
 				'empty_stringable'           => [[new Stringable('')]],
 				'stringable'                 => [[new Stringable('PHP')]],
-				'empty_array_object'         => [[new ArrayObject([])]],
-				'array_object'               => [[new ArrayObject([0, 1, 2, 3, 4])]],
-				'empty_fixed_array'          => [[new SplFixedArray()]],
-				'fixed_array'                => [[SplFixedArray::fromArray([0, 1, 2, 3, 4])]],
+				'empty_array_object'         => [[new \ArrayObject([])]],
+				'array_object'               => [[new \ArrayObject([0, 1, 2, 3, 4])]],
+				'empty_fixed_array'          => [[new \SplFixedArray()]],
+				'fixed_array'                => [[\SplFixedArray::fromArray([0, 1, 2, 3, 4])]],
 				// callable
 				'closure'                    => [[function(){}]],
 				'callable_method'            => [[[new Stringable(''), '__toString']]],

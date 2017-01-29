@@ -5,15 +5,15 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::gmpCreate()
- * @covers \Variable::hasPositiveNaturalNumbersOnly()
- * @covers \Variable::isPositiveNaturalNumber()
- * @covers \Variable::setWarningHandler()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasPositiveNaturalNumbersOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isPositiveNaturalNumber()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isInteger()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
+ * @uses \Fleshgrinder\Assertions\Variable::matches()
  */
 final class PositiveNaturalNumberTest extends VariableTest {
 

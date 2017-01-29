@@ -5,12 +5,12 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasTraversablesOnly()
- * @covers \Variable::isTraversable()
- * @uses \Variable::applyCallback()
+ * @covers \Fleshgrinder\Assertions\Variable::hasTraversablesOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isTraversable()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
  */
 final class TraversableTest extends VariableTest {
 	use DisableDeprecationErrors;

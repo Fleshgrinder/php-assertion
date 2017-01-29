@@ -5,6 +5,8 @@
  * @license MIT
  */
 
+namespace Fleshgrinder\Assertions;
+
 /**
  * The variable global static class can be used within {@see assert()} calls to examine variables. All methods return
  * `TRUE` if the given argument complies with the examination rules and `FALSE` if not. Refer to the package’s README
@@ -58,6 +60,7 @@ abstract class Variable {
 		assert('is_bool($pass_delta)', 'Third argument must be of type bool.');
 
 		if (is_iterable($var)) {
+			/** @noinspection ForeachSourceInspection */
 			foreach ($var as $delta => $member) {
 				if (($pass_delta ? $callback($member, $delta) : $callback($member)) === false) {
 					return false;
@@ -97,7 +100,7 @@ abstract class Variable {
 	 */
 	final public static function hasAllSet($var) {
 		return static::applyCallback($var, function ($member) {
-			return isset($member);
+			return $member !== \null;
 		});
 	}
 
@@ -157,7 +160,7 @@ abstract class Variable {
 	 */
 	final public static function hasInstancesOfOnly($var, $class, $allow_string = true) {
 		if (is_object($class)) {
-			$class = get_class(($class));
+			$class = get_class($class);
 		}
 
 		return static::applyCallback($var, function ($member) use ($class, $allow_string) {
@@ -178,7 +181,7 @@ abstract class Variable {
 	}
 
 	/**
-	 * Assert variable contains integers (ℤ) only, asserts big numbers with {@see GMP}.
+	 * Assert variable contains integers (ℤ) only.
 	 *
 	 * @link https://secure.php.net/integer
 	 * @see isInteger()
@@ -205,11 +208,11 @@ abstract class Variable {
 	 *
 	 * @see array_key_exists()
 	 * @param mixed $var
-	 * @param mixed $keys
+	 * @param string[] $keys
 	 * @return bool
 	 */
 	final public static function hasKeys($var, ...$keys) {
-		if (is_iterable($var) && !empty($var)) {
+		if (is_iterable($var)) {
 			foreach ($keys as $key) {
 				if (!array_key_exists($key, $var)) {
 					return false;
@@ -221,7 +224,7 @@ abstract class Variable {
 	}
 
 	/**
-	 * Assert variable contains natural numbers (ℕ₀) only, asserts big numbers with {@see GMP}.
+	 * Assert variable contains natural numbers (ℕ₀) only.
 	 *
 	 * @link https://secure.php.net/integer
 	 * @see isNaturalNumber()
@@ -269,7 +272,7 @@ abstract class Variable {
 	}
 
 	/**
-	 * Assert variable contains positive natural numbers (ℕ₁) only, asserts big numbers with {@see GMP}.
+	 * Assert variable contains positive natural numbers (ℕ₁) only.
 	 *
 	 * @link https://secure.php.net/integer
 	 * @see isPositiveNaturalNumber()
@@ -417,7 +420,7 @@ abstract class Variable {
 	 */
 	final public static function hasSubclassesOfOnly($var, $class, $allow_string = true) {
 		if (is_object($class)) {
-			$class = get_class(($class));
+			$class = get_class($class);
 		}
 
 		return static::applyCallback($var, function ($member) use ($class, $allow_string) {
@@ -453,76 +456,43 @@ abstract class Variable {
 		assert('is_bool($allow_string)', 'third argument must be of type bool');
 
 		if (is_object($class)) {
-			$class = get_class(($class));
+			$class = get_class($class);
 		}
 
 		return is_a($var, $class, $allow_string);
 	}
 
 	/**
-	 * Assert variable is an integer (ℤ), asserts big numbers with {@see GMP} if available. This method triggers
-	 * an error of severity `E_USER_NOTICE` if GMP is not installed.
+	 * Assert variable is an integer (ℤ).
 	 *
 	 * @lnk https://secure.php.net/integer
 	 * @param mixed $var
 	 * @return bool
 	 */
 	final public static function isInteger($var) {
-		if (!is_float($var) && is_numeric($var)) {
-			if (filter_var($var, FILTER_VALIDATE_INT) !== false) {
-				return true;
-			}
-
-			if (is_string($var) && self::gmpCreate($var) instanceof GMP) {
-				return true;
-			}
-		}
-
-		return false;
+		return !is_bool($var) && !is_float($var) && (\filter_var($var, \FILTER_VALIDATE_INT) !== \false || static::matches($var, '/^(?:\+|-)?(?:[1-9]\d*|0[0-7]*|0b[01]*|0x[\da-f]*)$/Di'));
 	}
 
 	/**
-	 * Assert variable is a natural number (ℕ₀), asserts big numbers with {@see GMP} if available. This method triggers
-	 * an error of severity `E_USER_NOTICE` if GMP is not installed.
+	 * Assert variable is a natural number (ℕ₀).
 	 *
 	 * @lnk https://secure.php.net/integer
 	 * @param mixed $var
 	 * @return bool
 	 */
 	final public static function isNaturalNumber($var) {
-		if (!is_float($var) && is_numeric($var)) {
-			if (filter_var($var, FILTER_VALIDATE_INT) !== false) {
-				return $var > -1;
-			}
-
-			if (is_string($var) && ($gmp = self::gmpCreate($var)) instanceof GMP) {
-				return gmp_cmp($gmp, -1) > -1;
-			}
-		}
-
-		return false;
+		return static::isInteger($var) && $var >= 0;
 	}
 
 	/**
-	 * Assert variable is a natural number (ℕ₀), asserts big numbers with {@see GMP} if available. This method triggers
-	 * an error of severity `E_USER_NOTICE` if GMP is not installed.
+	 * Assert variable is a natural number (ℕ₀).
 	 *
 	 * @lnk https://secure.php.net/integer
 	 * @param mixed $var
 	 * @return bool
 	 */
 	final public static function isPositiveNaturalNumber($var) {
-		if (!is_float($var) && is_numeric($var)) {
-			if (filter_var($var, FILTER_VALIDATE_INT) !== false) {
-				return $var > 0;
-			}
-
-			if (is_string($var) && ($gmp = self::gmpCreate($var)) instanceof GMP) {
-				return gmp_cmp($gmp, 0) > -1;
-			}
-		}
-
-		return false;
+		return static::isInteger($var) && $var >= 1;
 	}
 
 	/**
@@ -604,7 +574,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isStrictArray($var) {
-		if ($var instanceof SplFixedArray) {
+		if ($var instanceof \SplFixedArray) {
 			return true;
 		}
 
@@ -661,14 +631,21 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isSubclassOf($var, $class, $allow_string = true) {
-		assert('is_object($class) || is_string($class)', 'second argument must be of type object or string');
+		assert('is_object($class) || (is_string($class) && class_exists($class))', 'second argument must be an object or the name of an existing class');
 		assert('is_bool($allow_string)', 'third argument must be of type bool');
 
-		if (is_object($class)) {
-			$class = get_class($class);
+		$str = \is_string($var);
+
+		if (\is_object($var) === \false && $str === \false) {
+			return \false;
 		}
 
-		return is_subclass_of($var, $class, $allow_string);
+		if ($str && ($allow_string === \false || \class_exists($var) === \false)) {
+			return \false;
+		}
+
+		/** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+		return (new \ReflectionClass($var))->isSubclassOf(new \ReflectionClass($class));
 	}
 
 	/**
@@ -699,58 +676,6 @@ abstract class Variable {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Try to create GMP number, this method is used internally only to overcome some short coming of {@se gmp_init}.
-	 * This method triggers an error of severity `E_USER_NOTICE` if {@see GMP} is not installed.
-	 *
-	 * @param mixed $number
-	 * @return false|GMP
-	 */
-	private static function gmpCreate($number) {
-		if (!function_exists('gmp_init')) {
-			trigger_error('GMP is not installed, cannot assert big integers.', E_USER_NOTICE);
-			return false;
-		}
-
-		if (preg_match('/^0+?[0-9]*/', $number) === 1) {
-			return false;
-		}
-
-		if (is_string($number) && $number{0} === '+') {
-			$number = substr($number, 1);
-		}
-
-		self::setWarningHandler();
-
-		try {
-			$gmp = gmp_init($number);
-
-			if (gmp_strval($gmp) !== $number) {
-				return false;
-			}
-
-			return $gmp;
-		}
-		catch (ErrorException $e) {
-			return false;
-		}
-		finally {
-			restore_error_handler();
-		}
-	}
-
-	/**
-	 * Register error handler to throw an {@see ErrorException} if an `E_WARNING` is triggered. Caller must restore
-	 * error handler in finally block.
-	 *
-	 * @return void
-	 */
-	private static function setWarningHandler() {
-		set_error_handler(function ($severity, $message, $filename, $line_number) {
-			throw new ErrorException($message, 0, $severity, $filename, $line_number);
-		}, E_WARNING);
 	}
 
 }

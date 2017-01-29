@@ -5,12 +5,12 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasResourcesOnly()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasResourcesOnly()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class ResourceTest extends VariableTest {
 

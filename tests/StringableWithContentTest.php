@@ -5,14 +5,14 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasStringablesWithContentOnly()
- * @covers \Variable::isStringable()
- * @covers \Variable::isStringableWithContent()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasStringablesWithContentOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isStringable()
+ * @covers \Fleshgrinder\Assertions\Variable::isStringableWithContent()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class StringableWithContentTest extends VariableTest {
 

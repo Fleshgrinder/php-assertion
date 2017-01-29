@@ -21,20 +21,25 @@
         "scrutinizer/ocular": "^1.3"
     },
     "suggest": {
-        "ext-gmp": "For asserting big integer numbers.",
         "ext-bcmath": "For asserting arbitrary precision numbers."
     },
     "autoload": {
-		"psr-4": {
-			"Fleshgrinder\\Assertion\\": "src/"
-		},
 		"classmap": [
-			"src/Variable.php"
-		]
+			"src/BackwardsCompatibility/Variable.php"
+		],
+		"psr-4": {
+			"Fleshgrinder\\Assertions\\": [
+				"src/",
+				"tests/"
+			]
+		}
     },
     "autoload-dev": {
+		"classmap": [
+			"src/BackwardsCompatibility/Variable.php"
+		],
         "psr-4": {
-            "Fleshgrinder\\Assertion\\": [
+            "Fleshgrinder\\Assertions\\": [
 				"src/",
 				"tests/"
 			]

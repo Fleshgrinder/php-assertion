@@ -5,12 +5,12 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasFloatsOnly()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasFloatsOnly()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class FloatTest extends VariableTest {
 

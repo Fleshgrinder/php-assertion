@@ -5,13 +5,13 @@
  * @license MIT
  */
 
-namespace Fleshgrinder\Assertion;
+namespace Fleshgrinder\Assertions;
 
 /**
- * @covers \Variable::hasStrictArraysOnly()
- * @covers \Variable::isStrictArray()
- * @uses \Variable::applyCallback()
- * @uses \Variable::isTraversable()
+ * @covers \Fleshgrinder\Assertions\Variable::hasStrictArraysOnly()
+ * @covers \Fleshgrinder\Assertions\Variable::isStrictArray()
+ * @uses \Fleshgrinder\Assertions\Variable::applyCallback()
+ * @uses \Fleshgrinder\Assertions\Variable::isTraversable()
  */
 final class StrictArrayTest extends VariableTest {
 

@@ -17,11 +17,12 @@ engines:
     checks:
       CleanCode/StaticAccess:
         enabled: false
-      Controversial/CamelCasePropertyName:
-        enabled: false
       Controversial/CamelCaseParameterName:
         enabled: false
-
+      Controversial/CamelCasePropertyName:
+        enabled: false
+      Controversial/CamelCaseVariableName:
+        enabled: false
 ratings:
   paths:
     - "**.php"
