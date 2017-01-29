@@ -1,5 +1,7 @@
 <?php
 
+// @codingStandardsIgnoreStart
+
 /**
  * This class is for backwards compatibility only. It would also be possible to
  * use the {@see \class_alias} function, however, static code analysis tools,
@@ -11,3 +13,5 @@ abstract class Variable extends Fleshgrinder\Assertions\Variable {
 	// Intentionally left blank.
 
 }
+
+// @codingStandardsIgnoreEnd
