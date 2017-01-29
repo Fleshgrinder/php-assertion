@@ -181,7 +181,7 @@ abstract class Variable {
 	}
 
 	/**
-	 * Assert variable contains integers (ℤ) only, asserts big numbers with {@see GMP}.
+	 * Assert variable contains integers (ℤ) only.
 	 *
 	 * @link https://secure.php.net/integer
 	 * @see isInteger()
@@ -208,7 +208,7 @@ abstract class Variable {
 	 *
 	 * @see array_key_exists()
 	 * @param mixed $var
-	 * @param string[] ...$keys
+	 * @param string[] $keys
 	 * @return bool
 	 */
 	final public static function hasKeys($var, ...$keys) {
@@ -224,7 +224,7 @@ abstract class Variable {
 	}
 
 	/**
-	 * Assert variable contains natural numbers (ℕ₀) only, asserts big numbers with {@see GMP}.
+	 * Assert variable contains natural numbers (ℕ₀) only.
 	 *
 	 * @link https://secure.php.net/integer
 	 * @see isNaturalNumber()
@@ -272,7 +272,7 @@ abstract class Variable {
 	}
 
 	/**
-	 * Assert variable contains positive natural numbers (ℕ₁) only, asserts big numbers with {@see GMP}.
+	 * Assert variable contains positive natural numbers (ℕ₁) only.
 	 *
 	 * @link https://secure.php.net/integer
 	 * @see isPositiveNaturalNumber()
@@ -463,20 +463,18 @@ abstract class Variable {
 	}
 
 	/**
-	 * Assert variable is an integer (ℤ), asserts big numbers with {@see GMP} if available. This method triggers
-	 * an error of severity `E_USER_NOTICE` if GMP is not installed.
+	 * Assert variable is an integer (ℤ).
 	 *
 	 * @lnk https://secure.php.net/integer
 	 * @param mixed $var
 	 * @return bool
 	 */
 	final public static function isInteger($var) {
-		return !is_bool($var) && !is_float($var) && \filter_var($var, \FILTER_VALIDATE_INT) !== \false || static::matches($var, '/^(?:\+|-)?[1-9]\d*$/D');
+		return !is_bool($var) && !is_float($var) && (\filter_var($var, \FILTER_VALIDATE_INT) !== \false || static::matches($var, '/^(?:\+|-)?(?:[1-9]\d*|0[0-7]*|0b[01]*|0x[\da-f]*)$/Di'));
 	}
 
 	/**
-	 * Assert variable is a natural number (ℕ₀), asserts big numbers with {@see GMP} if available. This method triggers
-	 * an error of severity `E_USER_NOTICE` if GMP is not installed.
+	 * Assert variable is a natural number (ℕ₀).
 	 *
 	 * @lnk https://secure.php.net/integer
 	 * @param mixed $var
@@ -487,8 +485,7 @@ abstract class Variable {
 	}
 
 	/**
-	 * Assert variable is a natural number (ℕ₀), asserts big numbers with {@see GMP} if available. This method triggers
-	 * an error of severity `E_USER_NOTICE` if GMP is not installed.
+	 * Assert variable is a natural number (ℕ₀).
 	 *
 	 * @lnk https://secure.php.net/integer
 	 * @param mixed $var
