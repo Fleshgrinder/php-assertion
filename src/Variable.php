@@ -57,7 +57,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function applyCallback($var, callable $callback, $pass_delta = true) {
-		assert('is_bool($pass_delta)', 'Third argument must be of type bool.');
+		assert(is_bool($pass_delta), 'Third argument must be of type bool.');
 
 		if (is_iterable($var)) {
 			/** @noinspection ForeachSourceInspection */
@@ -80,8 +80,8 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function contains($var, $needle, $case_sensitive = false) {
-		assert('is_string($needle) && $needle !== \'\'', 'second argument must be of type string and have content');
-		assert('is_bool($case_sensitive)', 'third argument must be of type bool');
+		assert(is_string($needle) && $needle !== '', 'second argument must be of type string and have content');
+		assert(is_bool($case_sensitive), 'third argument must be of type bool');
 
 		if (!is_bool($var) && (is_scalar($var) || method_exists($var, '__toString'))) {
 			if ($case_sensitive) {
@@ -452,8 +452,8 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isInstanceOf($var, $class, $allow_string = true) {
-		assert('is_object($class) || is_string($class)', 'second argument must be of type object or string');
-		assert('is_bool($allow_string)', 'third argument must be of type bool');
+		assert(is_object($class) || is_string($class), 'second argument must be of type object or string');
+		assert(is_bool($allow_string), 'third argument must be of type bool');
 
 		if (is_object($class)) {
 			$class = get_class($class);
@@ -505,7 +505,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isRealNumber($var, $scale = self::BC_MATH_DEFAULT_SCALE) {
-		assert('Variable::isScalarNaturalNumber($scale)', 'BC Math scale must be a natural number (ℕ₀) of type int');
+		assert(Variable::isScalarNaturalNumber($scale), 'BC Math scale must be a natural number (ℕ₀) of type int');
 
 		if (is_numeric($var)) {
 			if (filter_var($var, FILTER_VALIDATE_FLOAT) !== false) {
@@ -631,8 +631,8 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function isSubclassOf($var, $class, $allow_string = true) {
-		assert('is_object($class) || (is_string($class) && class_exists($class))', 'second argument must be an object or the name of an existing class');
-		assert('is_bool($allow_string)', 'third argument must be of type bool');
+		assert(is_object($class) || (is_string($class) && class_exists($class)), 'second argument must be an object or the name of an existing class');
+		assert(is_bool($allow_string), 'third argument must be of type bool');
 
 		$str = \is_string($var);
 
@@ -669,7 +669,7 @@ abstract class Variable {
 	 * @return bool
 	 */
 	final public static function matches($var, $pattern) {
-		assert('is_string($pattern) && $pattern !== \'\'', 'second argument must be of type string and have content');
+		assert(is_string($pattern) && $pattern !== '', 'second argument must be of type string and have content');
 
 		if (!is_bool($var) && (is_scalar($var) || method_exists($var, '__toString'))) {
 			return preg_match($pattern, $var) === 1;
