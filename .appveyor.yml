@@ -17,6 +17,8 @@ environment:
     PHP_DIR: C:\tools\php
     XDEBUG_VERSION: 2.5.0
   matrix:
+    - PHP_VERSION: 7.0
+      XDEBUG_VC_VERSION: 14
     - PHP_VERSION: 7.1
       XDEBUG_VC_VERSION: 14
     - PHP_VERSION: 7.2
@@ -29,7 +31,7 @@ pull_requests:
   do_not_increment_build_number: true
 
 install:
-  - ps: appveyor-retry cinst --ignore-checksums --limit-output --yes php --version ((choco search php --exact --all-versions -r | select-string -pattern $Env:PHP_VERSION | Select-Object -first 1) -replace '[php|]','')
+  - ps: appveyor-retry cinst --force --ignore-checksums --limit-output --yes php --version ((choco search php --exact --all-versions -r | select-string -pattern $Env:PHP_VERSION | Select-Object -first 1) -replace '[php|]','')
   - CD %PHP_DIR%
   - COPY /Y php.ini-development php.ini
   - ECHO data.timezone="UTC" >> php.ini
