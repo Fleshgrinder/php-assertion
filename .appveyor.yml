@@ -14,15 +14,19 @@ clone_depth: 1
 environment:
   global:
     PATH: '%PHP_DIR%;%APPVEYOR_BUILD_FOLDER%\vendor\bin;%PATH%'
-    PHP_DIR: C:\tools\php
-    XDEBUG_VERSION: 2.5.0
   matrix:
     - PHP_VERSION: 7.0
+      PHP_DIR: C:\tools\php70
       XDEBUG_VC_VERSION: 14
+      XDEBUG_VERSION: 2.5.5
     - PHP_VERSION: 7.1
+      PHP_DIR: C:\tools\php71
       XDEBUG_VC_VERSION: 14
+      XDEBUG_VERSION: 2.5.5
     - PHP_VERSION: 7.2
+      PHP_DIR: C:\tools\php72
       XDEBUG_VC_VERSION: 15
+      XDEBUG_VERSION: 2.6.0beta1
 
 matrix:
   fast_finish: true
@@ -32,7 +36,7 @@ pull_requests:
 
 install:
   - ps: Set-Service wuauserv -StartupType "Automatic"; Start-Service wuauserv
-  - ps: appveyor-retry cinst --ignore-checksums --install-dir=%PHP_DIR% --limit-output --no-progress --stop-on-first-failure --yes php --version ((choco search php --exact --all-versions -r | select-string -pattern $Env:PHP_VERSION | Select-Object -first 1) -replace '[php|]','')
+  - ps: appveyor-retry cinst --ignore-checksums --limit-output --no-progress --stop-on-first-failure --yes php --version ((choco search php --exact --all-versions -r | select-string -pattern $Env:PHP_VERSION | Select-Object -first 1) -replace '[php|]','')
   - CD %PHP_DIR%
   - COPY /Y php.ini-development php.ini
   - ECHO data.timezone="UTC" >> php.ini
