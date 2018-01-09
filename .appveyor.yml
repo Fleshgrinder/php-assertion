@@ -22,7 +22,7 @@ environment:
     - PHP_VERSION: 7.1
       XDEBUG_VC_VERSION: 14
     - PHP_VERSION: 7.2
-      XDEBUG_VC_VERSION: 14
+      XDEBUG_VC_VERSION: 15
 
 matrix:
   fast_finish: true
