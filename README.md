@@ -2,7 +2,6 @@
 [![Latest Unstable Version](https://poser.pugx.org/fleshgrinder/assertion/v/unstable)](https://packagist.org/packages/fleshgrinder/assertion)
 [![Travis](https://img.shields.io/travis/Fleshgrinder/php-assertion.svg)](https://travis-ci.org/Fleshgrinder/php-assertion)
 [![Build status](https://ci.appveyor.com/api/projects/status/dfyfacv59mpmmhdt/branch/master?svg=true)](https://ci.appveyor.com/project/Fleshgrinder/php-assertion/branch/master)
-[![HHVM](https://img.shields.io/hhvm/fleshgrinder/assertion.svg)](http://hhvm.h4cc.de/package/fleshgrinder/assertion)
 [![License](https://poser.pugx.org/fleshgrinder/assertion/license)](https://packagist.org/packages/fleshgrinder/assertion)
 [![Total Downloads](https://poser.pugx.org/fleshgrinder/assertion/downloads)](https://packagist.org/packages/fleshgrinder/assertion)
 
@@ -12,26 +11,31 @@
 [![Code Climate: GPA](https://img.shields.io/codeclimate/github/Fleshgrinder/php-assertion.svg)](https://codeclimate.com/github/Fleshgrinder/php-assertion)
 [![Code Climate: Issues](https://img.shields.io/codeclimate/issues/github/Fleshgrinder/php-assertion.svg)](https://codeclimate.com/github/Fleshgrinder/php-assertion/issues)
 # PHP Assertions
-Library to ease defensive and design by contract (DbC) programming with [`assert()`](https://secure.php.net/assert) in PHP.
+Library to ease defensive and design by contract (DbC) programming with
+[`assert()`][assert] in PHP.
 
 ## Installation
-Open a terminal, enter your project directory and execute the following command to add this package to your
- dependencies:
+Open a terminal, enter your project directory and execute the following command
+to add this package to your dependencies:
 
 ```bash
 $ composer require fleshgrinder/assertion
 ```
 
-This command requires you to have Composer installed globally, as explained in the
- [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
+This command requires you to have Composer installed globally, as explained in
+the [installation chapter][composer-intro] of the Composer documentation.
 
-**NOTE:** Do not install the library as a development requirement because composer does not install them when a library
- is installed as a dependency of another library. You want your assertions to be executed at all times, except when the
- full application goes into production; which is managed through the [configuration](#configuration).
+**NOTE:** Do not install the library as a development requirement because
+composer does not install them when a library is installed as a dependency of
+another library. You want your assertions to be executed at all times, except
+when the full application goes into production; which is managed through the
+[configuration](#configuration).
 
 ## Usage
-This library provides a single purely static class that can be used in assertions to ease repetitive scalar inspections
- as well as writing custom inspections on top of it. The following code example illustrates the basic usage:
+This library provides a single purely static class that can be used in
+assertions to ease repetitive scalar inspections as well as writing custom
+inspections on top of it. The following code example illustrates the basic
+usage:
 
 ```php
 // Use built-in functions whenever possible.
@@ -47,61 +51,52 @@ assert($var === null || Variable::isScalarPositiveNaturalNumber($var), 'variable
 ```
 
 ### Big Floats
-The PHP extension [BC Math](https://secure.php.net/bcmath) is required to validate big float numbers. It is not required
- but a `E_USER_NOTICE` error is triggered if a big float is encountered and the extension is not available. PHP must be
- compiled with the `--enable-bcmath` flag and the extension is always loaded on Windows systems.
+The PHP extension [BC Math][bcmath] is required to validate big float numbers.
+It is not required but a `E_USER_NOTICE` error is triggered if a big float is
+encountered and the extension is not available. PHP must be compiled with the
+`--enable-bcmath` flag and the extension is always loaded on Windows systems.
 
 ### Defensive Programming / Design by Contract
 > “**Be polite, Never Assert**
 >
-> Avoid the `assert()` mechanism, because it could turn a three-day debug fest into a ten minute one.”
+> Avoid the `assert()` mechanism, because it could turn a three-day debug fest
+> into a ten minute one.”
 >
-> — [How to Write Unmaintainable Code](https://thc.org/root/phun/unmaintain.html), Roedy Green.
+> — [How to Write Unmaintainable Code][unmaintain], Roedy Green.
 
-Be sure to check the [Weblinks](#Weblinks) section and read through all the sources to find out what assertions are good
- for, when to use them, and when not. Feel free to open an issue if you are still in doubt.
+Be sure to check the [Weblinks](#Weblinks) section and read through all the
+sources to find out what assertions are good for, when to use them, and when
+not. Feel free to open an issue if you are still in doubt.
 
 ### Configuration
-Assertions need to be configured appropriately in order to be useful during [Development](#Development) as well as in
- [Production](#Production).
+Assertions need to be configured appropriately in order to be useful during
+[Development](#Development) as well as in [Production](#Production).
 
 #### Development
 ```ini
-[Assertion]
-assert.active     = 1
-assert.bail       = 1
-assert.callback   = 0
-assert.quiet_eval = 1
-assert.warning    = 0
-; PHP 7
-;assert.exception  = 1
-;zend.assertions   = 1
-
+assert.exception = 1
+zend.assertions  = 1
 ```
 
 #### Production
 ```ini
-[Assertion]
-assert.active     = 0
-assert.bail       = 0
-assert.callback   = 0
-assert.quiet_eval = 0
-assert.warning    = 0
-; PHP 7
-;assert.exception  = 0
-;zend.assertions   = -1
+assert.exception = 0
+zend.assertions  = -1
 ```
 
 ### Note
-Default functions that are already provided by PHP are not redefined in this library. Use the language functions
- whenever possible, e.g.: `is_string`, `is_int`, `is_float`, `is_numeric`, …
+Default functions that are already provided by PHP are not redefined in this
+library. Use the language functions whenever possible, e.g.: `is_string`,
+`is_int`, `is_float`, `is_numeric`, …
 
-However, many of the filter functions are exposed via methods that do not require additional arguments, for instance
- the integer and float assertions pass their arguments to the filter function with the appropriate filter and options
- set. Be careful and consider using `is_int` and `is_float` if you actually need the correct type but be even more
- careful if you need to handle very big numbers, in these cases use this library again since it will fall back to
- GMP and bcmath functions as needed while ensuring best performance by using the most appropriate library in the
- background.
+However, many of the filter functions are exposed via methods that do not
+require additional arguments, for instance the integer and float assertions pass
+their arguments to the filter function with the appropriate filter and options
+set. Be careful and consider using `is_int` and `is_float` if you actually need
+the correct type but be even more careful if you need to handle very big
+numbers, in these cases use this library again since it will fall back to bcmath
+functions as needed while ensuring best performance by using the most
+appropriate library in the background.
 
 ### FAQ
 > _Why is the class called Variable?_
@@ -113,27 +108,33 @@ assert(Variable::isPositiveNaturalNumber($id));
 // Assert variable (id) is (a) positive natural number.
 ```
 
-> _Why is it a class in the first place and not a collection of procedural functions?_
+> _Why is it a class in the first place and not a collection of procedural
+> functions?_
 
-Because PHP (composer) does not support lazy loading of procedural functions and it makes no sense to include the file
-in production. Using a class on the other hand makes lazy loading possible.
+Because PHP (composer) does not support lazy loading of procedural functions and
+it makes no sense to include the file in production. Using a class on the other
+hand makes lazy loading possible.
 
-> _Why does the class not follow PSR-4 (and the associated vendor prefixing to avoid conflicts) while the tests do?_
+> _Why does the class not follow PSR-4 (and the associated vendor prefixing to
+> avoid conflicts) while the tests do?_
 
-To minimize noise within the _assert_ calls and possible extra work with IDEs (like PhpStorm) that automatically import
- classes with _use_ statements that do not work nicely together with _assert_. I consider the likelihood of another
- class being named after something generic as _variable_ to be very low and thus concluded that above arguments are
- reason enough to put it in the global namespace.
+To minimize noise within the _assert_ calls and possible extra work with IDEs
+(like PhpStorm) that automatically import classes with _use_ statements that do
+not work nicely together with _assert_. I consider the likelihood of another
+class being named after something generic as _variable_ to be very low and thus
+concluded that above arguments are reason enough to put it in the global
+namespace.
 
 ## Credits
-Credit where credit is due: this library was inspired by [Drupal’s](https://www.drupal.org/) 
- [Inspector class](https://github.com/drupal/drupal/blob/8.0.x/core/lib/Drupal/Component/Assertion/Inspector.php).
+Credit where credit is due: this library was inspired by [Drupal’s][drupal] 
+[Inspector class][drupal-inspector].
 
 ## Weblinks
 - The PHP Group: “[_`assert()`_](https://secure.php.net/assert)”
-- Steve McConnell: “[_Code Complete: 2nd Edition_](http://www.stevemcconnell.com/cc.htm),”  2004, Microsoft Press, 960
- pages. ISBN: 0735619670. _Section 8.2 in particular but there is more general advice in regards to defensive
- programming and how to use `assert()` effectively._
+- Steve McConnell: “[_Code Complete: 2nd Edition_](http://www.stevemcconnell.com/cc.htm),”
+  2004, Microsoft Press, 960 pages. ISBN: 0735619670. _Section 8.2 in particular
+  but there is more general advice in regards to defensive programming and how
+  to use `assert()` effectively._
 - Aki Tendo, et al.: “[_Adding Assertions to Drupal - Test Tools._](https://www.drupal.org/node/2408013)”
 - Jess (xjm), et al.: “[_[policy, no patch] Define best practices for using and testing assertions and document them before adding assertions to core_](https://www.drupal.org/node/2548671)”
 - Aki Tendo: “[_Runtime Assertions have been added to Drupal core_](https://www.drupal.org/node/2569701),” September 29, 2015.
@@ -145,3 +146,10 @@ Credit where credit is due: this library was inspired by [Drupal’s](https://ww
 
 ## License
 [![MIT License](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/License_icon-mit.svg/48px-License_icon-mit.svg.png)](https://opensource.org/licenses/MIT)
+
+[assert]: https://secure.php.net/assert
+[composer-intro]: https://getcomposer.org/doc/00-intro.md
+[bcmath]: https://secure.php.net/bcmath
+[unmaintain]: https://thc.org/root/phun/unmaintain.html
+[drupal]: https://www.drupal.org/
+[drupal-inspector]: https://github.com/drupal/drupal/blob/8.0.x/core/lib/Drupal/Component/Assertion/Inspector.php
