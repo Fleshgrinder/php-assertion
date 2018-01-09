@@ -1,9 +1,9 @@
 language: php
 
 php:
-  - 5.6
   - 7.0
   - 7.1
+  - 7.2
   - nightly
   - hhvm
 
@@ -11,6 +11,13 @@ env:
   global:
     - COVERAGE_VERSION=7.1
     - PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
+  matrix:
+    - PHP_VERSION: 7.0
+      XDEBUG_VC_VERSION: 14
+    - PHP_VERSION: 7.1
+      XDEBUG_VC_VERSION: 14
+    - PHP_VERSION: 7.2
+      XDEBUG_VC_VERSION: 14
 
 matrix:
   allow_failures:
