@@ -4,11 +4,12 @@ php:
   - 7.0
   - 7.1
   - 7.2
+  - 7.3
   - nightly
 
 env:
   global:
-    - COVERAGE_VERSION=7.2
+    - COVERAGE_VERSION=7.3
     - PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
 
 matrix:
