@@ -27,6 +27,10 @@ environment:
       PHP_DIR: C:\tools\php72
       XDEBUG_VC_VERSION: 15
       XDEBUG_VERSION: 2.6.0beta1
+    - PHP_VERSION: 7.3
+      PHP_DIR: C:\tools\php73
+      XDEBUG_VC_VERSION: 15
+      XDEBUG_VERSION: 2.7.0
 
 matrix:
   fast_finish: true
